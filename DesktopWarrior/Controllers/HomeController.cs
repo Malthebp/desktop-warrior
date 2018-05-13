@@ -19,7 +19,7 @@ namespace DesktopWarrior.Controllers
         }
         public ActionResult Index()
         {
-            return View(_repository.GetProductById(2));
+            return View(_repository.GetProductById(1));
         }
 
         public ActionResult About()
