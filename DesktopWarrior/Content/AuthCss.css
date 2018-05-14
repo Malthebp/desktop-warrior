@@ -1,0 +1,7 @@
+﻿.product-type {
+    border: 1px solid black;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

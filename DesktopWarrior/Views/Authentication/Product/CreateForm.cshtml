@@ -1,0 +1,16 @@
+﻿@model DesktopWarrior.Models.ViewModels.CreateProductViewModel
+
+@{
+    ViewBag.Title = "CreateForm";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<h2>Create a new @Model.Category.Title</h2>
+@using (Html.BeginForm("Create", "Product", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(x => x.Product.Title)
+        @Html.EditorFor(x => x.Product.Title)
+    </div>
+    @Html.Action("GetFormType", "Product", new { type = Model.Category.UrlFriendlyTitle, product = Model.Product })
+}

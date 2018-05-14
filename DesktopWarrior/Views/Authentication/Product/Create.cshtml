@@ -1,0 +1,18 @@
+﻿@using DesktopWarrior.Models
+@model List<Category>
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<h1 class="row">Select a product type</h1>
+<div class="row">
+    @foreach (Category cat in Model)
+    {
+        <a class="col-md-4 product-type" href="@Url.Action("Create", "Product", new { productType = cat.UrlFriendlyTitle })">
+            <h3>@cat.Title</h3>
+        </a>
+    }
+</div>
+

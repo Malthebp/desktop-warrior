@@ -26,6 +26,10 @@ namespace DesktopWarrior
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/authentication").Include(
+                     "~/Content/Grid/bootstrap-grid.min.css",
+                     "~/Content/AuthCss.css"));
         }
     }
 }

@@ -5,45 +5,47 @@ using System.Linq;
 using System.Web;
 using DesktopWarrior.Models;
 using DesktopWarrior.DAL.Contexts;
+using System.Data.Entity;
 
 namespace DesktopWarrior.DAL.Repositories
 {
     public class ProductRepository : IProductRepository, IDisposable
     {
-        private readonly TESTContext context;
-        public ProductRepository(TESTContext context)
+        private readonly WebshopContext context;
+        public ProductRepository(WebshopContext context)
         {
             this.context = context;
         }
 
         public void DeleteProduct(int productId)
         {
-            throw new NotImplementedException();
+            var product = context.Products.Find(productId);
+            context.Products.Remove(product);
         }
 
         public Product GetProductById(int productId)
         {
-            return context.Products.Find(x => x.ProductId == productId);
+            return context.Products.Find(productId);
         }
 
         public List<Product> GetProducts()
         {
-            throw new NotImplementedException();
+            return context.Products.ToList();
         }
 
         public void InsertProduct(Product product)
         {
-            throw new NotImplementedException();
+            context.Products.Add(product);
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            context.SaveChanges();
         }
 
         public void UpdateProduct(Product product)
         {
-            throw new NotImplementedException();
+            context.Entry(product).State = EntityState.Modified;
         }
 
 
