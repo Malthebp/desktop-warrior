@@ -12,7 +12,7 @@ namespace DesktopWarrior.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Category()
         {
-            dg_Types = new HashSet<Type>();
+            Types = new HashSet<Type>();
         }
 
         [Key]
@@ -28,7 +28,7 @@ namespace DesktopWarrior.Models
         public string Video { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Type> dg_Types { get; set; }
+        public virtual ICollection<Type> Types { get; set; }
 
         // Not mapped properties
         [NotMapped]

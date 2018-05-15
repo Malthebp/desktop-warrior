@@ -1,15 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Spatial;
+using System.Web.Mvc;
+
 namespace DesktopWarrior.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+
 
     [Table("dg_Products")]
     public partial class Product
     {
         [Key]
+        [HiddenInput(DisplayValue = false)]
         public int ProductId { get; set; }
 
         [StringLength(100)]
@@ -27,5 +31,7 @@ namespace DesktopWarrior.Models
         public decimal? Price { get; set; }
 
         public int? Stock { get; set; }
+
+        public List<Type> Types { get; set; }
     }
 }

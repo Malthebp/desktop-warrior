@@ -1,4 +1,6 @@
-﻿@model DesktopWarrior.Models.ViewModels.CreateProductViewModel
+﻿@using DesktopWarrior.Models
+@using DesktopWarrior.Models.ViewModels
+@model CreateProductViewModel
 
 @{
     ViewBag.Title = "CreateForm";
@@ -8,9 +10,31 @@
 <h2>Create a new @Model.Category.Title</h2>
 @using (Html.BeginForm("Create", "Product", FormMethod.Post))
 {
-    <div>
-        @Html.LabelFor(x => x.Product.Title)
-        @Html.EditorFor(x => x.Product.Title)
-    </div>
-    @Html.Action("GetFormType", "Product", new { type = Model.Category.UrlFriendlyTitle, product = Model.Product })
+
+    @Html.LabelFor(x => x.Product.Title)
+    @Html.EditorFor(x => x.Product.Title)
+
+    @Html.LabelFor(x => x.Product.Description)
+    @Html.EditorFor(x => x.Product.Description)
+
+    @Html.LabelFor(x => x.Product.Image)
+    @Html.EditorFor(x => x.Product.Image)
+
+    @Html.LabelFor(x => x.Product.Price)
+    @Html.EditorFor(x => x.Product.Price)
+
+    @Html.LabelFor(x => x.Product.Stock)
+    @Html.EditorFor(x => x.Product.Stock)
+
+    @Html.LabelFor(x => x.Product.Video)
+    @Html.EditorFor(x => x.Product.Video)
+
+    @*@Html.Action("GetFormType", "Product", new { type = Model.Category.UrlFriendlyTitle, product = Model.Product })*@
+
+    @*foreach (Category category in Model.Categories)
+    {
+        @Html.DropDownList("TypeSelect" + category.CategoryId, new MultiSelectList(category.Types.Select(x => x.Title)), category.Title)
+    }*@
+
+    <button type="submit">Create product</button>
 }

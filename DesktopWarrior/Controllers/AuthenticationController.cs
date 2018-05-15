@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace DesktopWarrior.Controllers
 {
+    [Authorize]
     public class AuthenticationController : Controller
     {
         // GET: Authentication
