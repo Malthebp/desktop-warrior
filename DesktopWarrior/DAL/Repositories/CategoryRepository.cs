@@ -4,15 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using DesktopWarrior.Models;
-using DesktopWarrior.DAL.Contexts;
 using System.Data.Entity;
 
 namespace DesktopWarrior.DAL.Repositories
 {
     public class CategoryRepository : ICategoryRepository, IDisposable
     {
-        private readonly WebshopContext context;
-        public CategoryRepository(WebshopContext context)
+        private readonly DesktopGuysContext context;
+        public CategoryRepository(DesktopGuysContext context)
         {
             this.context = context;
         }
