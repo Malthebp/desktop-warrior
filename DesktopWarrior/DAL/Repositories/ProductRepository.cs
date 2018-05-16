@@ -11,8 +11,8 @@ namespace DesktopWarrior.DAL.Repositories
 {
     public class ProductRepository : IProductRepository, IDisposable
     {
-        private readonly WebshopContext context;
-        public ProductRepository(WebshopContext context)
+        private readonly DesktopGuysContext context;
+        public ProductRepository(DesktopGuysContext context)
         {
             this.context = context;
         }

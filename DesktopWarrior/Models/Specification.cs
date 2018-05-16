@@ -1,4 +1,4 @@
-namespace DesktopWarrior.Models
+namespace DesktopWarrior.DAL
 {
     using System;
     using System.Collections.Generic;
@@ -9,12 +9,6 @@ namespace DesktopWarrior.Models
     [Table("dg_Specifications")]
     public partial class Specification
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Specification()
-        {
-            dg_Types = new HashSet<Type>();
-        }
-
         [Key]
         public int SpecificationId { get; set; }
 
@@ -23,8 +17,5 @@ namespace DesktopWarrior.Models
 
         [Column(TypeName = "ntext")]
         public string Description { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Type> dg_Types { get; set; }
     }
 }
