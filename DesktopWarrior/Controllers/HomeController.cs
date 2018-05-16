@@ -15,7 +15,7 @@ namespace DesktopWarrior.Controllers
         private IProductRepository _repository;
         public HomeController()
         {
-            _repository = new ProductRepository(new DAL.WebshopContext());
+            _repository = new ProductRepository(new DAL.DesktopGuysContext());
         }
         public ActionResult Index()
         {

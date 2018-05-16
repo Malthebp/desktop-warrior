@@ -1,4 +1,4 @@
-namespace DesktopWarrior.Models
+namespace DesktopWarrior.DAL
 {
     using System;
     using System.Collections.Generic;
@@ -12,6 +12,7 @@ namespace DesktopWarrior.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Category()
         {
+            Products = new HashSet<Product>();
             Types = new HashSet<Type>();
         }
 
@@ -28,11 +29,15 @@ namespace DesktopWarrior.Models
         public string Video { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product> Products { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Type> Types { get; set; }
 
         // Not mapped properties
         [NotMapped]
-        public string UrlFriendlyTitle {
+        public string UrlFriendlyTitle
+        {
             get
             {
                 return Title.ToString().Trim().Replace(" ", "-").ToLower();
