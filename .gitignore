@@ -55,5 +55,5 @@ node_modules
 sitemap*.xml.gz
 
 # Custom DW ignores
-DesktopWarrior/bin
-DesktopWarrior/obj
+DesktopWarrior/bin/*
+DesktopWarrior/obj/*
