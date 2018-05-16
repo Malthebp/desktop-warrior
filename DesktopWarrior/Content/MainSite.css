@@ -1,8 +1,9 @@
 ﻿/* Vars*/
-html {
+:root {
     --main-turkish: #379f9e;
     --main-white: #fff;
-    --main-yellow: #e7f26c;
+    --main-yellow: rgb(231, 242, 108);
+    --main-dark: #354666;
     --byr-header-color: #366479;
 }
 
@@ -54,19 +55,104 @@ html {
 }
 
 /* Build your rig */
-.byr-header {
+.byr__header {
     width: 100%;
     background-color: var(--byr-header-color);
     color: var(--main-white);
 }
-.byr-header .container{
+.byr__header .container {
     height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.byr-header__stepper {
+.byr__content {
+    height: 500px;
+    border: 1px solid var(--main-turkish);
+    border-radius: 3px;
+    overflow-y: auto;
+}
+
+.content__product {
+    width: 100%;
+    height: 75px;
+    display: flex;
+}
+
+.byr__selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.selector__select {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main-dark);
+}
+
+.selector__select.done svg path{
+    fill: rgb(231, 242, 108) !important;
+}
+
+
+.selector__select:hover .select__overlay {
+    opacity: 0.75;
+}
+.select__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-dark);
+    border-radius: 7px;
+    opacity: 0;
+    transition: ease-in-out 0.2s opacity;
+}
+
+.selector__select svg {
+    width: 35px;
+}
+
+.selector__select span {
+    opacity: 0;
+    position: absolute;
+    z-index: 1;
+    transition: ease-in-out 0.2s opacity;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    color: var(--main-white);   
+     word-break: break-all;
+     padding: 0 3px;
+}
+
+.selector__select:hover span {
+    opacity: 1;
+}
+
+.selector__select.active:before {
+    content: url(Images/indicator.svg);
+    position: absolute;
+    bottom: -19px;
+    width: 15px;
+    height: 15px;
+}
+
+
+
+
+
+
+.header__stepper {
     display: flex;
     width: 50%;
 }

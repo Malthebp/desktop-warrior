@@ -22,7 +22,7 @@ namespace DesktopWarrior
 
             routes.MapRoute(
                 name: "Auth",
-                url: "auth/{controller}/{action}/{id}",
+                url: "auth/{action}/{id}",
                 defaults: new {controller = "Authentication", action = "Index", id = UrlParameter.Optional}
              );
 

@@ -38,6 +38,26 @@ namespace DesktopWarrior.Models.ViewModels.BuildYourRig
             this.lines.Remove(item);
         }
 
+        public void SwitchProduct (Product product)
+        {
+            var prod = lines.Where(p => p.Product.CategoryId == product.CategoryId);
+            if (prod != null)
+            {
+            }
+        }
+
+        public string HasCategory(int catId)
+        {
+            var hasProduct = Lines.Where(x => x.Product.CategoryId == catId).FirstOrDefault();
+            if (hasProduct == null)
+            {
+                return null;
+            } else
+            {
+                return "done";
+            }
+        }
+
         public void Clear()
         {
             this.lines.Clear();

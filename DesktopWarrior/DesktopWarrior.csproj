@@ -224,6 +224,7 @@
     <Content Include="Content\Grid\bootstrap-grid.css" />
     <Content Include="Content\Grid\bootstrap-grid.min.css" />
     <Content Include="Content\Images\desktop_guys_logo.svg" />
+    <Content Include="Content\Images\indicator.svg" />
     <Content Include="Content\MainSite.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
