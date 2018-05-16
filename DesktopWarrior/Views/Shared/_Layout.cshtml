@@ -17,12 +17,13 @@
             </a>
             <ul>
                 <li><a href="#">Guide</a></li>
-                <li><a href="#">Build your rig</a></li>
+                <li><a href="@Url.Action("Index", "Byr")">Build your rig</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </div>
     </nav>
+    @RenderSection("byrHead")
     <div class="container body-content">
         @RenderBody()
     </div>

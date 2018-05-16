@@ -13,16 +13,16 @@ namespace DesktopWarrior.Models.ModelBinders
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         { 
             // get the Cart from the session
-            Bwr bwr = null;
+            Byr bwr = null;
 
             if (controllerContext.HttpContext.Session != null)
             {
-                bwr = (Bwr)controllerContext.HttpContext.Session[sessionKey];
+                bwr = (Byr)controllerContext.HttpContext.Session[sessionKey];
             }
             // create the Cart if there wasn't one in the session data
             if (bwr == null)
             {
-                bwr = new Bwr();
+                bwr = new Byr();
                 if (controllerContext.HttpContext.Session != null)
                 {
                     controllerContext.HttpContext.Session[sessionKey] = bwr;

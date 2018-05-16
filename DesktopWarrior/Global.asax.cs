@@ -20,7 +20,7 @@ namespace DesktopWarrior
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
 
-            ModelBinders.Binders.Add(typeof(Bwr), new BuildYourRigModelBinder());
+            ModelBinders.Binders.Add(typeof(Byr), new BuildYourRigModelBinder());
         }
     }
 }

@@ -2,6 +2,8 @@
 html {
     --main-turkish: #379f9e;
     --main-white: #fff;
+    --main-yellow: #e7f26c;
+    --byr-header-color: #366479;
 }
 
 * {
@@ -49,4 +51,49 @@ html {
 }
 .main-navigation__logo img {
     width: 50px;
+}
+
+/* Build your rig */
+.byr-header {
+    width: 100%;
+    background-color: var(--byr-header-color);
+    color: var(--main-white);
+}
+.byr-header .container{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.byr-header__stepper {
+    display: flex;
+    width: 50%;
+}
+
+.stepper__step {
+    width: 15px;
+    height: 15px;
+    border: 1px solid var(--main-white);
+    border-radius: 50px;
+    margin-right: 7px;
+    position: relative;
+}
+
+.stepper__step:not(:last-child):after {
+    content: '';
+    height: 1px;
+    background-color: var(--main-white);
+    position: absolute;
+    right: -8px;
+    top: 6px;
+    width: 8px;
+}
+
+.stepper__step.done {
+    background-color: var(--main-white);
+}
+
+.stepper__step.done.active {
+    background-color: var(--main-yellow);
 }

@@ -2,12 +2,12 @@
 
 namespace DesktopWarrior.Models.ViewModels.BuildYourRig
 {
-    public class BwrLine
+    public class ByrLine
     {
         public Product Product { get; set; }
         public int Quantity { get; set; }
 
-        public BwrLine(Product product, int quantity)
+        public ByrLine(Product product, int quantity)
         {
             this.Product = product;
             this.Quantity = quantity;

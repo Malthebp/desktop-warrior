@@ -13,7 +13,7 @@ namespace DesktopWarrior.Controllers
         {
             _repository = new ProductRepository(new DAL.DesktopGuysContext());
         }
-        public ActionResult Index(Bwr bwr)
+        public ActionResult Index()
         {
             return View();
         }

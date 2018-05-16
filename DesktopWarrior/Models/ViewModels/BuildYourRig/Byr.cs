@@ -6,25 +6,25 @@ using System.Web;
 
 namespace DesktopWarrior.Models.ViewModels.BuildYourRig
 {
-    public class Bwr
+    public class Byr
     {
-        private List<BwrLine> lines = new List<BwrLine>();
+        private List<ByrLine> lines = new List<ByrLine>();
         public decimal TotalPrice
         {
             get { return lines.Sum(e => e.Product.Price * e.Quantity); }
         }
-        public List<BwrLine> Lines { get { return lines; } }
+        public List<ByrLine> Lines { get { return lines; } }
 
 
-        public Bwr()
+        public Byr()
         { }
 
         public void AddItem(Product product, int quantity)
         {
-            BwrLine item = lines.Where(p => p.Product.ProductId == product.ProductId).FirstOrDefault();
+            ByrLine item = lines.Where(p => p.Product.ProductId == product.ProductId).FirstOrDefault();
             if (item == null)
             {
-                this.lines.Add(new BwrLine(product, quantity));
+                this.lines.Add(new ByrLine(product, quantity));
             }
             else
             {

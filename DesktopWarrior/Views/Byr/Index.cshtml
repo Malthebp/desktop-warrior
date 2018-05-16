@@ -1,0 +1,24 @@
+﻿@model DesktopWarrior.Models.ViewModels.ByrViewModel
+
+@{
+    
+    var activeCat = 3;
+}
+
+@section byrHead 
+{
+    <header class="byr-header">
+        <div class="container">
+            <h1>Select your stuff</h1>
+            @*<div class="byr-header__stepper">
+               @for (var i = 1; i < 9; i++)
+               {
+                   <div class="stepper__step @(activeCat >= i ? "done" : "") @(activeCat == i ? "active" : "")"></div>
+               }
+            </div>*@
+        </div>
+    </header>
+}
+<main>
+
+</main>
