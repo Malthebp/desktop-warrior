@@ -53,3 +53,7 @@ src*/packages
 # Frontend Package
 node_modules
 sitemap*.xml.gz
+
+# Custom DW ignores
+DesktopWarrior/bin
+DesktopWarrior/obj
