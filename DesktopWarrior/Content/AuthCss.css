@@ -5,3 +5,37 @@
     align-items: center;
     justify-content: center;
 }
+
+.auth-sidenav {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.auth-sidenav li a{
+    padding: 8px;
+    width: 100%;
+    display: block;
+    background-color: #f1f1f1;
+    text-decoration: none;
+    border-left: 1px solid #e1e1e1;
+    border-right: 1px solid #e1e1e1;
+    color: #000;
+}
+
+.auth-sidenav li a:hover {
+    background-color: #e6e6e6
+}
+
+.auth-sidenav li:not(:last-child) {
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.auth-sidenav li:first-child a{
+    border-top: 1px solid #e1e1e1;
+    border-radius: 5px 5px 0 0;
+}
+
+.auth-sidenav li:last-child a {
+    border-bottom: 1px solid #e1e1e1;
+    border-radius: 0 0 5px 5px;
+}

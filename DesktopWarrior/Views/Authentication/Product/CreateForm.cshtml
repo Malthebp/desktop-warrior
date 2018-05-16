@@ -29,12 +29,5 @@
     @Html.LabelFor(x => x.Product.Video)
     @Html.EditorFor(x => x.Product.Video)
 
-    @*@Html.Action("GetFormType", "Product", new { type = Model.Category.UrlFriendlyTitle, product = Model.Product })*@
-
-    @*foreach (Category category in Model.Categories)
-    {
-        @Html.DropDownList("TypeSelect" + category.CategoryId, new MultiSelectList(category.Types.Select(x => x.Title)), category.Title)
-    }*@
-
     <button type="submit">Create product</button>
 }

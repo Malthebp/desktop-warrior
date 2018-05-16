@@ -19,22 +19,7 @@ namespace DesktopWarrior.Controllers
         }
         public ActionResult Index()
         {
-            return View(_repository.GetProductById(1));
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
     }
 }
