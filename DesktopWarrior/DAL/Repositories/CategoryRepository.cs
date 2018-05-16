@@ -2,9 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using DesktopWarrior.Models;
-using System.Data.Entity;
 
 namespace DesktopWarrior.DAL.Repositories
 {
