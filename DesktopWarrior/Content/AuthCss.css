@@ -39,3 +39,7 @@
     border-bottom: 1px solid #e1e1e1;
     border-radius: 0 0 5px 5px;
 }
+
+.container.body-content {
+    margin-top: 50px;
+}
