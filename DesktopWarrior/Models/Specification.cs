@@ -1,4 +1,4 @@
-namespace DesktopWarrior.DAL
+namespace DesktopWarrior.Models
 {
     using System;
     using System.Collections.Generic;

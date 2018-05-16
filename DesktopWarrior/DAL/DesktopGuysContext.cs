@@ -1,9 +1,7 @@
 namespace DesktopWarrior.DAL
 {
-    using System;
     using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
+    using DesktopWarrior.Models;
 
     public partial class DesktopGuysContext : DbContext
     {
@@ -15,7 +13,7 @@ namespace DesktopWarrior.DAL
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Specification> Specifications { get; set; }
-        public virtual DbSet<Type> Types { get; set; }
+        public virtual DbSet<Models.Type> Types { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -33,7 +31,7 @@ namespace DesktopWarrior.DAL
                 .WithMany(e => e.Products)
                 .Map(m => m.ToTable("dg_ProductsTypes").MapLeftKey("ProductId").MapRightKey("TypeId"));
 
-            modelBuilder.Entity<Type>()
+            modelBuilder.Entity<Models.Type>()
                 .HasMany(e => e.Types1)
                 .WithOptional(e => e.Types2)
                 .HasForeignKey(e => e.ParentId);

@@ -1,11 +1,7 @@
 ﻿using DesktopWarrior.DAL.Interfaces;
 using DesktopWarrior.DAL.Repositories;
-using DesktopWarrior.DAL.Contexts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using DesktopWarrior.Models.ViewModels.BuildYourRig;
 
 namespace DesktopWarrior.Controllers
 {
@@ -17,7 +13,7 @@ namespace DesktopWarrior.Controllers
         {
             _repository = new ProductRepository(new DAL.DesktopGuysContext());
         }
-        public ActionResult Index()
+        public ActionResult Index(Bwr bwr)
         {
             return View();
         }
