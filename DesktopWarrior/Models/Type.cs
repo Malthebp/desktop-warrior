@@ -1,4 +1,4 @@
-namespace DesktopWarrior.Models
+namespace DesktopWarrior.DAL
 {
     using System;
     using System.Collections.Generic;
@@ -12,15 +12,13 @@ namespace DesktopWarrior.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Type()
         {
-            dg_Types1 = new HashSet<Type>();
+            Types1 = new HashSet<Type>();
+            Categories = new HashSet<Category>();
+            Products = new HashSet<Product>();
         }
 
         [Key]
         public int TypeId { get; set; }
-
-        public int? CategoryId { get; set; }
-
-        public int? SpecificationId { get; set; }
 
         public int? ParentId { get; set; }
 
@@ -30,13 +28,15 @@ namespace DesktopWarrior.Models
         [Column(TypeName = "ntext")]
         public string Description { get; set; }
 
-        public virtual Category dg_Categories { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Type> Types1 { get; set; }
 
-        public virtual Specification dg_Specifications { get; set; }
+        public virtual Type Types2 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Type> dg_Types1 { get; set; }
+        public virtual ICollection<Category> Categories { get; set; }
 
-        public virtual Type dg_Types2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

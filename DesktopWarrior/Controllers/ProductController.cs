@@ -16,7 +16,7 @@ namespace DesktopWarrior.Controllers
 
         public ProductController()
         {
-            _repository = new ProductRepository(new WebshopContext());
+            _repository = new ProductRepository(new DesktopGuysContext());
         }
 
         // GET: Product
@@ -36,25 +36,7 @@ namespace DesktopWarrior.Controllers
         [HttpGet]
         public ActionResult Create(string productType = null)
         {
-            var categories = new List<Category>()
-            {
-                new Category() {Title = "CPU", CategoryId = 1, Description = "Something",
-                    Types = new List<Type>()
-                    {
-                        new Type() {Title = "Some type title 1", TypeId = 1, CategoryId = 1, Description = "Type description"},
-                        new Type() {Title = "Some type title 2", TypeId = 2, CategoryId = 2, Description = "Type description"},
-                        new Type() {Title = "Some type title 3", TypeId = 3, CategoryId = 3, Description = "Type description"},
-                    }
-                },
-                new Category() {Title = "Mother board", CategoryId = 2, Description = "Something",
-                    Types = new List<Type>()
-                    {
-                        new Type() {Title = "Some type title 1", TypeId = 4, CategoryId = 1, Description = "Type description"},
-                        new Type() {Title = "Some type title 2", TypeId = 5, CategoryId = 2, Description = "Type description"},
-                    }
-                },
-                new Category() {Title = "Memory", CategoryId = 3, Description = "Something"}
-            };
+            var categories = new List<Category>();
 
             if (productType == null)
             {

@@ -91,6 +91,5 @@ C:\Visual studio projects\DesktopWarrior\DesktopWarrior\bin\Microsoft.AI.Depende
 C:\Visual studio projects\DesktopWarrior\DesktopWarrior\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Visual studio projects\DesktopWarrior\DesktopWarrior\bin\Microsoft.AI.WindowsServer.xml
 C:\Visual studio projects\DesktopWarrior\DesktopWarrior\bin\Microsoft.AI.Web.xml
-C:\Visual studio projects\DesktopWarrior\DesktopWarrior\obj\Debug\DesktopWarrior.csprojResolveAssemblyReference.cache
 C:\Visual studio projects\DesktopWarrior\DesktopWarrior\obj\Debug\DesktopWarrior.dll
 C:\Visual studio projects\DesktopWarrior\DesktopWarrior\obj\Debug\DesktopWarrior.pdb
