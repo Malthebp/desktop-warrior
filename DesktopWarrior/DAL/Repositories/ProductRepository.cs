@@ -2,10 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using DesktopWarrior.Models;
-using DesktopWarrior.DAL.Contexts;
 using System.Data.Entity;
+using DesktopWarrior.Models;
 
 namespace DesktopWarrior.DAL.Repositories
 {

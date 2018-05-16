@@ -1,4 +1,4 @@
-namespace DesktopWarrior.DAL
+namespace DesktopWarrior.Models
 {
     using System;
     using System.Collections.Generic;
@@ -32,7 +32,7 @@ namespace DesktopWarrior.DAL
         [StringLength(100)]
         public string Image { get; set; }
 
-        public decimal? Price { get; set; }
+        public decimal Price { get; set; }
 
         public int? Stock { get; set; }
 
