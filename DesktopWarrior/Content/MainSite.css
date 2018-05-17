@@ -21,6 +21,10 @@ html {
     font-size: 12px;
 }
 
+.body-content {
+    min-height: 80vh;
+}
+
 /* Main navigation */
 .main-navigation {
     padding: 25px 0;
@@ -44,6 +48,9 @@ html {
     text-decoration: none;
     padding: 0 2rem;
     font-size: 1.7rem;
+}
+.main-navigation ul li a:hover {
+    color: var(--main-yellow);
 }
 
 .main-navigation ul li:not(:last-child) a {
@@ -149,6 +156,10 @@ html {
     min-height: 150px;
     max-height: 500px;
     padding: 8px;
+}
+
+.all-products {
+    margin-top: 16px;
 }
 
 .content__products {
@@ -319,4 +330,62 @@ ul.description__types {
 
 .stepper__step.done.active {
     background-color: var(--main-yellow);
+}
+
+/* Footer */
+footer.main-footer {
+    width: 100%;
+    background: var(--main-turquoise);
+    color: var(--main-white);
+    padding: 36px 0;
+}
+
+.footer__logo {
+    width: 100px;
+    height: 100%;
+}
+
+.footer__navigation h3{
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+
+.footer__navigation ul {
+    list-style-type: none;
+}
+
+.footer__navigation ul li a {
+    display: block;
+    color: var(--main-white);
+    font-size: 1.3rem;
+    text-decoration: none;
+    padding: 2px 0;
+}
+
+.footer__navigation ul li a:hover {
+    text-decoration: underline
+}
+
+.footer__btn {
+    display: block;
+    background: var(--main-white);
+    padding: 8px 16px;
+    color: var(--main-dark);
+    box-shadow: var(--btn-dropshadow);
+    text-decoration: none;
+    width: 200px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.footer__build p {
+    font-size: 1.3rem;
+}
+
+.footer__build {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
