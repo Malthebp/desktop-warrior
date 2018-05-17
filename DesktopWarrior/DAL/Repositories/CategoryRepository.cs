@@ -24,6 +24,11 @@ namespace DesktopWarrior.DAL.Repositories
             return context.Categories.ToList();
         }
 
+        public List<Category> GetCategoriesBySql()
+        {
+            return context.Categories.SqlQuery(@"SELECT p.*, pt.* FROM dg_Products p INNER JOIN dg_ProductsTypes as pt ON pt.ProductId = p.ProductId WHERE p.CategoryId = 4 AND pt.TypeId = 17").ToList();
+        }
+
 
         private bool disposed = false;
 

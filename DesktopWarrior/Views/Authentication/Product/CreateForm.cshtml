@@ -8,8 +8,10 @@
 }
 
 <h2>Create a new @Model.Category.Title</h2>
-@using (Html.BeginForm("Create", "Product", FormMethod.Post))
+@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { @class = "form-product__create" }))
 {
+    @Html.LabelFor(x => x.Product.CategoryId)
+    @Html.TextBoxFor(x => x.Product.CategoryId, new { @Value = Model.Category.CategoryId, @readonly = "readonly" })
 
     @Html.LabelFor(x => x.Product.Title)
     @Html.EditorFor(x => x.Product.Title)
@@ -29,5 +31,20 @@
     @Html.LabelFor(x => x.Product.Video)
     @Html.EditorFor(x => x.Product.Video)
 
+    @Html.LabelFor(x => x.Product.Types)
+    @Html.EditorFor(x => x.Product.Types)
+
     <button type="submit">Create product</button>
 }
+
+@*<script>
+    $(function () {
+        $("#addMore").click(function (e) {
+            e.preventDefault();
+            $("#fieldList").append("<li>&nbsp;</li>");
+            $("#fieldList").append("<li><input type='text' name='name[]' placeholder='Name' /></li>");
+            $("#fieldList").append("<li><input type='text' name='phone[]' placeholder='Phone' /></li>");
+            $("#fieldList").append("<li><input type='text' name='email[]' placeholder='E-Mail' /></li>");
+        });
+    });
+</script>*@

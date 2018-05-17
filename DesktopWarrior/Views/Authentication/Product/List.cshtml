@@ -1,0 +1,17 @@
+﻿@using DesktopWarrior.Models
+@model List<Product>
+
+@{
+    ViewBag.Title = "Product list";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+<h1>What up</h1>
+<h1 class="row">Select a product type</h1>
+<div class="row">
+    @foreach (Product prod in Model)
+    {
+            <h3>@prod.Title</h3>
+            <img src="@prod.Image"></img>
+    }
+</div>
+

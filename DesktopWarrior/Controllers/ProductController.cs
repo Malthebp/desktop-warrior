@@ -12,11 +12,13 @@ namespace DesktopWarrior.Controllers
     public class ProductController : Controller
     {
         private IProductRepository _repository;
+        private ICategoryRepository _categoryRep;
         private readonly string _authProductViewPath = "~/Views/Authentication/Product/";
 
         public ProductController()
         {
             _repository = new ProductRepository(new DesktopGuysContext());
+            _categoryRep = new CategoryRepository(new DesktopGuysContext());
         }
 
         // GET: Product
@@ -27,16 +29,26 @@ namespace DesktopWarrior.Controllers
 
         [Authorize]
         // GET: Authenticated Products
-        public ActionResult AuthProductIndex()
+        public ActionResult AuthProductIndex(int categoryId = 0, string productType = null)
         {
-            return View(_authProductViewPath + "Index.cshtml");
+            var categories = _categoryRep.GetCategories();
+            if (productType == null)
+            {
+                return View(_authProductViewPath + "Index.cshtml", categories);
+            }
+            else
+            {
+                var products = _repository.GetProductsByCategory(categoryId);
+                return View(_authProductViewPath + "List.cshtml", products);
+
+            }
         }
 
         [Authorize]
         [HttpGet]
         public ActionResult Create(string productType = null)
         {
-            var categories = new List<Category>();
+            var categories = _categoryRep.GetCategories();
 
             if (productType == null)
             {
@@ -56,6 +68,15 @@ namespace DesktopWarrior.Controllers
             _repository.InsertProduct(product);
             _repository.Save();
             return View(_authProductViewPath + "Index.cshtml");
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult List()
+        {
+
+            var products = _repository.GetProducts();
+            return View(_authProductViewPath + "List.cshtml", products);
         }
 
         [Authorize]
