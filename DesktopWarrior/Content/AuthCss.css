@@ -43,3 +43,13 @@
 .container.body-content {
     margin-top: 50px;
 }
+
+.form-product__create {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.form-product__create label {
+    margin-top: 10px;
+}

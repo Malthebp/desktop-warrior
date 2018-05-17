@@ -7,6 +7,7 @@ namespace DesktopWarrior.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
     using System.Linq;
+    using System.ComponentModel;
 
     [Table("dg_Products")]
     public partial class Product
@@ -20,6 +21,7 @@ namespace DesktopWarrior.Models
         [Key]
         public int ProductId { get; set; }
 
+        [DisplayName("Category")]
         public int? CategoryId { get; set; }
 
         [StringLength(100)]

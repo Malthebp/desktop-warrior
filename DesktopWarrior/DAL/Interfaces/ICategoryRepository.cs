@@ -11,5 +11,6 @@ namespace DesktopWarrior.DAL.Interfaces
     {
         List<Category> GetCategories();
         Category GetCategoryById(int categoryId);
+        List<Category> GetCategoriesBySql();
     }
 }

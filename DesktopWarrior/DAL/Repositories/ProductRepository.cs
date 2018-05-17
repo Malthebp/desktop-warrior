@@ -41,6 +41,11 @@ namespace DesktopWarrior.DAL.Repositories
             return context.Products.ToList();
         }
 
+        public List<Product> GetProductsByCategory(int categoryId)
+        {
+            return context.Products.Where(x => x.CategoryId == categoryId).ToList();
+        }
+
         public void InsertProduct(Product product)
         {
             context.Products.Add(product);
