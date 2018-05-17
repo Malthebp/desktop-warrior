@@ -1,0 +1,28 @@
+﻿@using DesktopWarrior.Models
+@model List<Product>
+
+@{
+    ViewBag.Title = "Product list";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+<h1 class="row">Overview of products</h1>
+<div class="row db-product">
+    @foreach (Product prod in Model)
+    {
+        <h3>@prod.Title</h3> 
+        <a href="@Url.Action("Update", "Product", new { productId = prod.ProductId})">
+            <p>Edit</p>
+        </a>
+        <div class="db-products-detail">
+            <section id="image">
+                <img src="@prod.Image"></img>
+            </section>
+
+            <section id="specs">
+                <p>Description: @prod.Description</p>
+                <p>Price: @prod.Price</p>
+                <p>Stock: @prod.Stock</p>
+            </section>
+        </div>
+    }
+</div>

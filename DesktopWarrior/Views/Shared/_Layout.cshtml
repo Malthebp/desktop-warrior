@@ -13,11 +13,11 @@
     <nav class="main-navigation">
         <div class="container">
             <a href="@Url.Action("Index", "Home")" class="main-navigation__logo">
-                <img src="~/Content/Images/desktop_guys_logo.svg"/>
+                <img src="~/Content/Images/desktop_guys_logo.svg" alt="Logo"/>
             </a>
             <ul>
-                <li><a href="#">Guide</a></li>
                 <li><a href="@Url.Action("Index", "Byr")">Build your rig</a></li>
+                <li><a href="#">Guide</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
@@ -28,8 +28,39 @@
         @RenderBody()
     </div>
 
-    <footer>
-        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row">
+                <section class="col-md-3 d-flex justify-content-center">
+                    <img src="~/Content/Images/desktop_guys_logo.svg" alt="Logo" class="footer__logo" />
+                </section>
+                <section class="col-md-4 footer__navigation">
+                    <h3>Products</h3>
+                    <div class="row">
+                        <ul class="col-md-4">
+                            <li><a href="#">Cpu's</a></li>
+                            <li><a href="#">Cpu coolers</a></li>
+                            <li><a href="#">Motherboards</a></li>
+                            <li><a href="#">Memory</a></li>
+                            <li><a href="#">Cases</a></li>
+                        </ul>
+                        <ul class="col-md-4">
+                            <li><a href="#">Graphics cards</a></li>
+                            <li><a href="#">Storages</a></li>
+                            <li><a href="#">Power Supplies</a></li>
+                        </ul>
+                    </div>
+
+                </section>
+                <section class="col-md-5 footer__navigation footer__build">
+                    <div>
+                        <h3>Build your own rig today!</h3>
+                        <p>Ready to get startet building your own rig?</p>
+                    </div>
+                    <a href="@Url.Action("Index", "Byr")" class="footer__btn">Build your rig now!</a>
+                </section>
+            </div>
+        </div>
     </footer>
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)

@@ -43,3 +43,28 @@
 .container.body-content {
     margin-top: 50px;
 }
+
+.form-product__create {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.form-product__create label {
+    margin-top: 10px;
+}
+
+.db-products-detail {
+    height: 150px;
+    display: flex;
+    border-bottom: 1px solid grey;
+    width: 100%;
+}
+
+.db-products-detail #image, .db-products-detail #image img {
+    height: 100%;
+}
+
+.db-product h3 {
+    padding: 5px 15px;
+}

@@ -1,23 +1,31 @@
 ﻿@using DesktopWarrior.Models.ViewModels
 @using DesktopWarrior.Models.ViewModels.BuildYourRig
 @using DesktopWarrior.Models
+@using System.Web.UI.WebControls;
 @model ByrViewModel
 
-@section byrHead 
+@{
+    var listItems = new List<ListItem>
+    {
+    new ListItem { Text = "Most popular", Value = "1" },
+    new ListItem { Text = "Highest rated", Value = "2" },
+    new ListItem { Text = "Lowest rated", Value = "3" },
+    };
+}
+
+@section byrHead
 {
     <header class="byr__header">
         <div class="container">
-            <h1>Select a @Model.Category.Title</h1>
-            @*<div class="byr-header__stepper">
-               @for (var i = 1; i < 9; i++)
-               {
-                   <div class="stepper__step @(activeCat >= i ? "done" : "") @(activeCat == i ? "active" : "")"></div>
-               }
-            </div>*@
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+                <h1>Select a @Model.Category.Title</h1>
+            </div>
         </div>
     </header>
 }
-<main class="row">
+
+    <main class="row">
     <aside class="byr__preview col-md-4">
         <img class="byr__preview-img" src="https://i.imgur.com/p4hzBtz.jpg">
 
@@ -58,43 +66,56 @@
             }
 
     </aside>
-    <div class="col-md-8 byr">
-        <div class="byr__selector">
-            @foreach (Category cat in Model.Categories)
+        <div class="col-md-8 byr">
+            <div class="byr__selector">
+                @foreach (Category cat in Model.Categories)
             {
-                <a class="selector__select @(Model.Category.CategoryId == cat.CategoryId ? "active" : "" ) @(Model.Build.HasCategory(cat.CategoryId) ?  "Done " : "")" href="@Url.Action("Index", "Byr", new { id = cat.CategoryId })">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 286 286" style="enable-background:new 0 0 286 286;" xml:space="preserve">
-                        <path d="M172.559,112.934c0,16.114-13.11,29.225-29.226,29.225c-16.114,0-29.225-13.11-29.225-29.225s13.11-29.225,29.225-29.225  C159.448,83.709,172.559,96.819,172.559,112.934z M257,271c0,8.284-6.716,15-15,15H44c-8.284,0-15-6.716-15-15V15  c0-8.284,6.716-15,15-15h198c8.284,0,15,6.716,15,15V271z M58.486,43.102c0,7.856,6.369,14.225,14.225,14.225  c7.856,0,14.225-6.369,14.225-14.225s-6.369-14.225-14.225-14.225C64.855,28.877,58.486,35.246,58.486,43.102z M86.936,243.114  c0-7.856-6.369-14.225-14.225-14.225c-7.856,0-14.225,6.369-14.225,14.225c0,7.856,6.369,14.225,14.225,14.225  C80.568,257.339,86.936,250.97,86.936,243.114z M214.187,115.089c0-38.791-31.56-70.35-70.351-70.35s-70.35,31.559-70.35,70.35  c0,17.174,6.194,32.923,16.455,45.151l11.858-11.897c4.913-4.929,12.566-5.832,18.489-2.184c5.924,3.647,8.562,10.89,6.373,17.493  l-5.925,17.871c7.24,2.525,15.008,3.915,23.099,3.915C182.627,185.438,214.187,153.88,214.187,115.089z M229.186,243.114  c0-7.856-6.369-14.225-14.225-14.225c-7.856,0-14.225,6.369-14.225,14.225c0,7.856,6.369,14.225,14.225,14.225  C222.817,257.339,229.186,250.97,229.186,243.114z M229.186,43.102c0-7.856-6.369-14.225-14.225-14.225  c-7.856,0-14.225,6.369-14.225,14.225s6.369,14.225,14.225,14.225C222.817,57.327,229.186,50.958,229.186,43.102z" style="fill: rgb(255, 255, 255);"></path>
-                    </svg>
-                    <span>@cat.Title</span>
-                    <div class="select__overlay"></div>
-                </a>
-            }
+                    <a class="selector__select @(Model.Category.CategoryId == cat.CategoryId ? "active" : "" ) @(Model.Build.HasCategory(cat.CategoryId) ?  "done" : "")" href="@Url.Action("Index", "Byr", new { id = cat.CategoryId })">
+                        @Html.Raw(cat.Icon)
+                        <span>@cat.Title</span>
+                        <div class="select__overlay"></div>
+                    </a>
+                }
+            </div>
+            <div class="byr__content">
+                <div class="content__products">
+                    <h2>Compatible products</h2>
+                    @if (Model.CompatibleProducts.Count != 0)
+                    {
+                        foreach (Product prod in Model.CompatibleProducts)
+                        {
+                            @Html.Partial("ProductPartial", prod)
+                        }
+                    } else
+                    {
+                        <h3>There are no compatible products. See the list of all products.</h3>
+                    }
+                </div>
+            </div>
+            <div class="byr__content all-products">
+                <div class="content__search">
+                    <div>
+                        @using (Html.BeginForm("Search", "Byr"))
+                        {
+                            @Html.Label("Search for " + Model.Category.Title + ":")
+                            @Html.TextBox("searchQuery", null, new { @placeholder = "Search..." })
+                        }
+                    </div>
+                    <div class="search__sort">
+                        @using (Html.BeginForm("Sort", "Byr"))
+                        {
+                            @Html.Label("Sort by:")
+                            @Html.DropDownList("sortBy", new SelectList(listItems, 1));
+                        }
+                    </div>
+                </div>
+                <div class="content__products">
+                    <h2>All products</h2>
+                    @foreach (Product prod in Model.Category.Products)
+                    {
+                        @Html.Partial("ProductPartial", prod)
+                    }
+                </div>
+            </div>
         </div>
-        <div class="byr__content">
-            @foreach (Product prod in Model.Category.Products)
-            {
-                @RenderProduct(prod)
-            }
-        </div>
-    </div>
-</main>
-
-
-@helper RenderProduct (Product p)
-{
-    <div class="content__product">
-        @p.Title
-
-
-
-        @using (Html.BeginForm("AddToBuild", "Byr", FormMethod.Post))
-        {
-            @Html.Hidden("productId", p.ProductId);
-            @Html.Hidden("id", Model.Category.CategoryId);
-
-            <button type="submit">Add to build</button>
-        }
-
-    </div>
-}
+    </main>

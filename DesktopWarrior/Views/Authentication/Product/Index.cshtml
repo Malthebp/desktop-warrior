@@ -1,9 +1,19 @@
-﻿
+﻿@using DesktopWarrior.Models
+@model List<Category>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AuthLayout.cshtml";
 }
 
 <h2>Index of Products</h2>
+<div class="row">
+    @foreach (Category cat in Model)
+    {
+        <a class="col-md-4 product-type" href="@Url.Action("AuthProductIndex", "Product", new { productType = cat.UrlFriendlyTitle, categoryId = cat.CategoryId })">
+            <h3>@cat.Title</h3>
+        </a>
+    }
+</div>
 
 @Html.ActionLink("Create product", "Create", "Product")

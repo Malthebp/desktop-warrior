@@ -34,6 +34,8 @@ namespace DesktopWarrior.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Type> Types { get; set; }
 
+        public string Icon { get; set; }
+
         // Not mapped properties
         [NotMapped]
         public string UrlFriendlyTitle
