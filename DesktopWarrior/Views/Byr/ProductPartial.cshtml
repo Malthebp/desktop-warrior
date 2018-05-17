@@ -21,19 +21,20 @@
                 <h3> $@Model.Price</h3>
             </div>
             <div class="product__review">
-                <span class="star active"></span>
-                <span class="star "></span>
-                <span class="star active"></span>
-                <span class="star"></span>
-                <span class="star"></span>
+                <img src="~/Content/Images/star.svg" class="star" />
+                <img src="~/Content/Images/star.svg" class="star" />
+                <img src="~/Content/Images/star.svg" class="star" />
+                <img src="~/Content/Images/star-stroke.svg" class="star" />
+                <img src="~/Content/Images/star-stroke.svg" class="star"/>
+                <span class="review__count">(12)</span>
             </div>
-            @using (Html.BeginForm("AddToBuild", "Byr", FormMethod.Get))
+            @using (Html.BeginForm("AddToBuild", "Byr", FormMethod.Get, new { @class = "product__add-form"}))
             {
                 @Html.Hidden("productId", Model.ProductId);
                 @Html.Hidden("catId", Model.Category.CategoryId);
                 @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
 
-                <button type="submit">Add to build</button>
+                <button type="submit" class="product__add">Add</button>
             }
         </div>
     </div>
