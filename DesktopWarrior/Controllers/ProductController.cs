@@ -71,6 +71,15 @@ namespace DesktopWarrior.Controllers
         }
 
         [Authorize]
+        [HttpGet]
+        public ActionResult Update(int productId)
+        {
+            var product = _repository.GetProductById(productId);
+            return View(_authProductViewPath + "update.cshtml", product ;
+
+        }
+
+        [Authorize]
         [HttpPost]
         public ActionResult List()
         {

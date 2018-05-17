@@ -288,6 +288,7 @@
     <Content Include="Views\Byr\Index.cshtml" />
     <Content Include="Views\Byr\ProductPartial.cshtml" />
     <Content Include="Views\Authentication\Product\List.cshtml" />
+    <Content Include="Views\Authentication\Product\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
