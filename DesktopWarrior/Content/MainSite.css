@@ -103,12 +103,16 @@ html {
     background-color: var(--main-turquoise);
 }
 
-.selector__select.done svg path{
-    fill: rgb(231, 242, 108) !important;
-}
+    .selector__select.done svg path, .selector__select.done svg polygon, .selector__select.done svg rect {
+        fill: rgb(231, 242, 108) !important;
+    }
 
 .selector__select:hover .select__overlay {
     opacity: 0.75;
+}
+
+.selector__select svg path, .selector__select svg polygon,  .selector__select svg rect {
+    fill: rgb(255, 255, 255) !important;
 }
 
 .select__overlay {
