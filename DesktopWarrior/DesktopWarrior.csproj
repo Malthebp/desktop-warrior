@@ -286,6 +286,7 @@
     <Content Include="Views\Authentication\Product\CreateForm.cshtml" />
     <Content Include="Views\Authentication\Product\Forms\cpu.cshtml" />
     <Content Include="Views\Byr\Index.cshtml" />
+    <Content Include="Views\Byr\ProductPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

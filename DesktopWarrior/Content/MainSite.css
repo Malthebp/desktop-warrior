@@ -4,6 +4,7 @@
     --main-white: #fff;
     --main-yellow: rgb(231, 242, 108);
     --main-dark: #354666;
+    --main-light: #f1f1f1;
     --byr-header-color: #366479;
 }
 
@@ -54,6 +55,8 @@ html {
     width: 50px;
 }
 
+
+
 /* Build your rig */
 .byr__header {
     width: 100%;
@@ -65,19 +68,6 @@ html {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.byr__content {
-    height: 500px;
-    border: 1px solid var(--main-turkish);
-    border-radius: 3px;
-    overflow-y: auto;
-}
-
-.content__product {
-    width: 100%;
-    height: 75px;
-    display: flex;
 }
 
 .byr__selector {
@@ -104,10 +94,10 @@ html {
     fill: rgb(231, 242, 108) !important;
 }
 
-
 .selector__select:hover .select__overlay {
     opacity: 0.75;
 }
+
 .select__overlay {
     position: absolute;
     width: 100%;
@@ -147,9 +137,111 @@ html {
     height: 15px;
 }
 
+.byr__content {
+    border: 1px solid var(--main-turkish);
+    border-radius: 3px;
+    height: 500px;
+    padding: 8px;
+}
+
+.content__products {
+    overflow-y: auto;
+    height: 450px;
+}
+
+.content__products::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+.content__products::-webkit-scrollbar {
+    width: 8px;
+    height: 12px;
+    background-color: #F5F5F5;
+}
+
+.content__products::-webkit-scrollbar-thumb {
+    background-color: var(--main-dark);
+    width: 100px;
+    border-radius: 8px;
+}
+
+.content__product {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--main-light);
+    padding: 16px 0;
+}
+
+.content__product article {
+    padding: 16px 0;
+}
+
+.content__product img{
+    width: 100px;
+    height: 100%;
+}
+
+.product__left div{
+    float: left;
+}
 
 
+.product__description {
+    margin-left: 16px;
+}
 
+.product__description h3 a, .product__price{
+    font-size: 1.4rem;
+    color: var(--main-turkish);
+    text-decoration: none;
+}
+
+.product__description h3 a:hover {
+    text-decoration: underline;
+}
+
+.product__price {
+
+}
+
+.product__review .star {
+    width: 10px;
+}
+
+.product__review .star:before {
+    /*content: url('Images/star.svg');*/
+    width: 10px;
+    display: block;
+}
+
+ul.description__types {
+    -webkit-padding-start: 0;
+    list-style-type: none;
+    margin-top: 8px;
+}
+
+.content__search {
+    margin-left: 100px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.content__search label {
+    font-size: 1.3rem;
+    margin-right: 8px;
+}
+
+.content__search input, .content__search select {
+    padding: 6px;
+    border-radius: 3px;
+    box-shadow: none;   
+    border: 1px solid var(--main-turkish);
+    font-size: 1.1rem;
+}
 
 
 .header__stepper {

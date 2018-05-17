@@ -1,0 +1,40 @@
+﻿@using DesktopWarrior.Models
+@model Product
+<div>
+    <div class="content__product">
+        <div class="product__left">
+            <div>
+                <img src="@Model.Image" />
+            </div>
+            <div class="product__description">
+                <h3><a href="#">@Model.Title</a></h3>
+                <ul class="description__types">
+                    @foreach (var t in Model.Types)
+                    {
+                        <li>@t.Title</li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="product__right">
+            <div class="product__price">
+                <h3> $@Model.Price</h3>
+            </div>
+            <div class="product__review">
+                <span class="star active"></span>
+                <span class="star "></span>
+                <span class="star active"></span>
+                <span class="star"></span>
+                <span class="star"></span>
+            </div>
+            @using (Html.BeginForm("AddToBuild", "Byr", FormMethod.Get))
+            {
+                @Html.Hidden("productId", Model.ProductId);
+                @Html.Hidden("catId", Model.Category.CategoryId);
+                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+
+                <button type="submit">Add to build</button>
+            }
+        </div>
+    </div>
+</div>

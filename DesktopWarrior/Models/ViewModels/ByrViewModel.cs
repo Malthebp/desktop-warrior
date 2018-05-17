@@ -11,5 +11,6 @@ namespace DesktopWarrior.Models.ViewModels
         public Category Category { get; set; }
         public List<Category> Categories { get; set; }
         public Byr Build { get; set; }
+        public List<Product> CompatibleProducts { get; set; }
     }
 }

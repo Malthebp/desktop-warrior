@@ -58,6 +58,19 @@ namespace DesktopWarrior.Models.ViewModels.BuildYourRig
             }
         }
 
+        public Product GetProductInLineByCategoryId(int catId)
+        {
+            var line = Lines.Where(x => x.Product.CategoryId == catId).FirstOrDefault();
+            if (line == null)
+            {
+                return null;
+            }
+            else
+            {
+                return line.Product;
+            }
+        }
+
         public void Clear()
         {
             this.lines.Clear();

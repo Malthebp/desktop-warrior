@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
 using DesktopWarrior.Models;
+using System.Data.SqlClient;
 
 namespace DesktopWarrior.DAL.Repositories
 {
@@ -24,6 +25,15 @@ namespace DesktopWarrior.DAL.Repositories
         public Product GetProductById(int productId)
         {
             return context.Products.Find(productId);
+        }
+
+        public List<Product> GetCompatibleProducts(int catId, int[] typeIds)
+        {
+            var sql1 = new SqlParameter("@CategoryID", catId);
+            var sql2 = new SqlParameter("@ChildIDs", string.Join("", typeIds));
+
+            var products = context.Products.SqlQuery("exec getProducts @CategoryID, @ChildIDs", sql1, sql2).ToList();
+            return products;
         }
 
         public List<Product> GetProducts()

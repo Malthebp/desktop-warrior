@@ -31,8 +31,8 @@ namespace DesktopWarrior.Controllers
         }
 
         // TODO: Redirect back or next page?
-        [HttpPost]
-        public ActionResult AddToBuild(Byr byr, int productId, int id)
+        [HttpGet]
+        public RedirectToRouteResult AddToBuild(Byr byr, int productId, int catId, string returnUrl)
         {
             var product = _productRep.GetProductById(productId);
             var existProduct = byr.Lines.Where(x => x.Product.ProductId == productId).FirstOrDefault();
@@ -42,7 +42,7 @@ namespace DesktopWarrior.Controllers
                 byr.AddItem(product, 1);
             } else
             {
-                var sameCat = existProduct.Product.CategoryId == id;
+                var sameCat = existProduct.Product.CategoryId == catId;
                 if (!sameCat)
                 {
                     byr.AddItem(product, 1);
@@ -54,16 +54,23 @@ namespace DesktopWarrior.Controllers
                     byr.AddItem(product, 1);
                 }
             }
-            return View("Index", CreateByrViewModel(byr, id));
-
+            var id = catId;
+            
+            return RedirectToAction("Index", new { controller = returnUrl.Substring(1) });
         }
 
 
         private ByrViewModel CreateByrViewModel (Byr byr, int catId = 0)
         {
+            catId = catId == 0 ? 1 : catId;
+
             var categories = _categoryRep.GetCategories();
-            var category = categories.Find(x => x.CategoryId == (catId == 0 ? 1 : catId));
-            var model = new ByrViewModel() { Categories = categories, Category = category, Build = byr };
+            var category = categories.Find(x => x.CategoryId == catId);
+            var ids = new Product().GetCompatibleIds(catId, byr, categories);
+
+            var compProducts = _productRep.GetCompatibleProducts(catId, new int[] { 17 });
+
+            var model = new ByrViewModel() { Categories = categories, Category = category, Build = byr, CompatibleProducts = compProducts };
 
             return model;
         }
