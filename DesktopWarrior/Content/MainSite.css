@@ -1,6 +1,6 @@
 ﻿/* Vars*/
 :root {
-    --main-turkish: #379f9e;
+    --main-turquoise: #379f9e;
     --main-white: #fff;
     --main-yellow: rgb(231, 242, 108);
     --main-dark: #354666;
@@ -24,7 +24,7 @@ html {
 /* Main navigation */
 .main-navigation {
     padding: 25px 0;
-    background: var(--main-turkish);
+    background: var(--main-turquoise);
 }
 
 .main-navigation div {
@@ -93,7 +93,7 @@ html {
 }
 
 .selector__select.active {
-    background-color: var(--main-turkish);
+    background-color: var(--main-turquoise);
 }
 
 .selector__select.done svg path{
@@ -144,7 +144,7 @@ html {
 }
 
 .byr__content {
-    border: 1px solid var(--main-turkish);
+    border: 1px solid var(--main-turquoise);
     border-radius: 3px;
     min-height: 150px;
     max-height: 500px;
@@ -206,7 +206,7 @@ html {
 
 .product__description h3 a, .product__price{
     font-size: 1.4rem;
-    color: var(--main-turkish);
+    color: var(--main-turquoise);
     text-decoration: none;
 }
 
@@ -284,7 +284,7 @@ ul.description__types {
     padding: 6px;
     border-radius: 3px;
     box-shadow: none;   
-    border: 1px solid var(--main-turkish);
+    border: 1px solid var(--main-turquoise);
     font-size: 1.1rem;
 }
 
