@@ -59,9 +59,15 @@
             <div class="byr__content">
                 <div class="content__products">
                     <h2>Compatible products</h2>
-                    @foreach (Product prod in Model.CompatibleProducts)
+                    @if (Model.CompatibleProducts.Count != 0)
                     {
-                        @Html.Partial("ProductPartial", prod)
+                        foreach (Product prod in Model.CompatibleProducts)
+                        {
+                            @Html.Partial("ProductPartial", prod)
+                        }
+                    } else
+                    {
+                        <h3>There are no compatible products. See the list of all products.</h3>
                     }
                 </div>
             </div>
