@@ -3,8 +3,9 @@
     --main-turkish: #379f9e;
     --main-white: #fff;
     --main-yellow: rgb(231, 242, 108);
-    --main-dark: #354666;
-    --byr-header-color: #366479;
+    --secondary-yellow: #f2d26f;
+    --main-blue-1: #354666;
+    --main-blue-2: #366479;
 }
 
 * {
@@ -54,6 +55,109 @@ html {
     width: 50px;
 }
 
+/* Build your rig preview */
+.byr__preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.byr__checkout-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.byr__preview-img {
+    max-width: 40%;
+    max-height: 40%;
+}
+
+.byr__added-wrapper {
+    width: 70%;
+    background-color: var(--main-blue-2);
+    border-radius: 5px;
+    color: white;
+    margin: 1em;
+}
+
+.byr__added {
+    padding: 1em;
+}
+
+.byr__product-line-wrapper-1 {
+    display: flex;
+    align-items: flex-start;
+}
+
+.byr__product-line-wrapper-2 {
+    width:100%
+}
+
+
+.byr__product-line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 0.8em;
+}
+
+.byr__product-sub {
+    width: 1.5em;
+    margin-top: 0.2em;
+    margin-right: 0.5em;
+    border: 0;
+    color: black;
+    background-color: red;
+    font-family: 'Roboto Condensed', sans-serif;
+    padding-bottom: 1px;
+}
+
+.byr__product-title {
+}
+
+.byr__product-price{
+    margin-left: auto;
+    text-align: left;
+}
+
+.byr__total {
+    text-align: center;
+    padding: 1em;
+    position: relative;
+}
+
+.byr__total:before {
+    content: '';
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+}
+
+.byr__purchase-form {
+    width: 70%;
+}
+
+.byr__checkout-btn {
+    height: 4rem;
+    width: 100%;
+    color: var(--main-blue-1);
+    background-color: var(--main-yellow);
+    border-right: 0;
+    border-top: 0;
+    border-left: 0;
+    border-bottom: 3px solid var(--secondary-yellow);
+    border-radius: 4px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+
 /* Build your rig */
 .byr__header {
     width: 100%;
@@ -97,7 +201,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--main-dark);
+    background-color: var(--main-blue-1);
 }
 
 .selector__select.done svg path{
@@ -112,7 +216,7 @@ html {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: var(--main-dark);
+    background-color: var(--main-blue-1);
     border-radius: 7px;
     opacity: 0;
     transition: ease-in-out 0.2s opacity;
