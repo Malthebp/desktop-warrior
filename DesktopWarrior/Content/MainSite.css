@@ -172,18 +172,102 @@ html {
 
 
 /* Build your rig */
-.byr__header {
-    width: 100%;
-    background-color: var(--byr-header-color);
+/* Header Start*/
+.byr__header-cat-name {
+    display: flex;
+    text-align: center;
     color: var(--main-white);
-}
-
-    .byr__header .container {
-        height: 60px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+    background-color: var(--byr-header-color);
+    height: 5em;
+  }
+  
+  .byr__header-cat-name .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  @media only screen and (max-width: 992px) {
+    .byr__header-cat-name .container .col-md-4 {
+      display: none;
     }
+  }
+  
+  .accordion-title {
+    display: flex;
+    text-align: center;
+    background-color: var(--main-blue-1);
+    color: var(--main-white);
+    height: 2.5em;
+  }
+  
+  .accordion-title .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  @media only screen and (max-width: 992px) {
+    .accordion-title .container .col-md-4 {
+      display: none;
+    }
+  }
+  
+  .accordion-title div {
+    display: flex;
+  }
+  
+  .accordion-btn {
+    background-color: Transparent;
+    color: var(--main-white);
+    border: solid white 1px;
+    border-radius: 5px;
+    min-width: 6em;
+    text-align: center;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    margin-left: 2em;
+    transition: 0.4s;
+    outline: 0;
+  }
+  
+  .active,
+  .accordion-btn:hover {
+    background-color: #ccc;
+  }
+  
+  .accordion-content {
+    background-color: var(--main-blue-1);
+    color: var(--main-white);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+  
+  @media only screen and (max-width: 992px) {
+    .accordion-content .container .col-md-4 {
+      display: none;
+    }
+  }
+  
+  .accordion-content .container {
+    padding: 1.5em;
+    display: flex;
+  }
+  
+  .byr__header-cat-name h1 {
+    text-align: left;
+    font-weight: normal;
+  }
+  
+  .accordion-title h3 {
+    text-align: left;
+    font-weight: normal;
+  }
+  /* Header End */
+  
 
 .byr__selector {
     display: flex;
