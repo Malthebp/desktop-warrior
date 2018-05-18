@@ -46,15 +46,21 @@ namespace DesktopWarrior.Models.ViewModels.BuildYourRig
             }
         }
 
-        public string HasCategory(int catId)
+        public ByrLine getLineForCategory(int catId)
+        {
+            var line = Lines.Where(x => x.Product.CategoryId == catId).FirstOrDefault();
+            return line;
+        }
+
+        public Boolean HasCategory(int catId)
         {
             var hasProduct = Lines.Where(x => x.Product.CategoryId == catId).FirstOrDefault();
             if (hasProduct == null)
             {
-                return null;
+                return false;
             } else
             {
-                return "done";
+                return true;
             }
         }
 

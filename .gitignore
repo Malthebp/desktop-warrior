@@ -13,6 +13,7 @@ $RECYCLE.BIN/
 
 # User-specific files
 *.suo
+*.csproj.user
 *.user
 *.sln.docstates
 
@@ -43,6 +44,8 @@ UpgradeLog*.htm
 *.bak
 *.ncb
 *.log 
+*.dll
+*.pdb
 
 # Project structure
 lib/packages
@@ -61,3 +64,5 @@ DesktopWarrior/obj/*
 DesktopWarrior/bin/
 
 DesktopWarrior/obj/
+DesktopWarrior/bin/DesktopWarrior.pdb
+DesktopWarrior/obj/Debug/DesktopWarrior.pdb
