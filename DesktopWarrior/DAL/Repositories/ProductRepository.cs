@@ -81,5 +81,35 @@ namespace DesktopWarrior.DAL.Repositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        public void AttachTypeToProduct(int typeId, int productId)
+        {
+
+            var product = new Product() { ProductId = productId };
+            context.Products.Add(product);
+            context.Products.Attach(product);
+
+            var type = new Models.Type() { TypeId = typeId };
+            context.Types.Add(type);
+            context.Types.Attach(type);
+
+            product.Types = new List<Models.Type>();
+            product.Types.Add(type);
+
+            Save();
+        }
+
+        public void DetachTypeFromProduct(int typeId, int productId)
+        {
+            var product = context.Products.Include(x => x.Types).Single(x => x.ProductId == productId);
+
+            context.Products.Attach(product);
+            var typeToDelet = product.Types.First(x => x.TypeId == typeId);
+            if (typeToDelet != null)
+            {
+                product.Types.Remove(typeToDelet);
+                Save();
+            }
+        }
     }
 }

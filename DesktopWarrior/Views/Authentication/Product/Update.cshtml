@@ -8,14 +8,47 @@
 }
 
 
-<a class="col-md-4 product-type" href="@Url.Action("AuthProductIndex", "Product", new { productType = Model.Category.UrlFriendlyTitle, categoryId = Model.Product.CategoryId })">
+<a class="col-md-4" href="@Url.Action("AuthProductIndex", "Product", new { productType = Model.Category.UrlFriendlyTitle, categoryId = Model.Product.CategoryId })">
     <h3>GO BACK</h3>
 </a>
 <h2>Update the current product</h2>
-@using (Html.BeginForm("Update", "Product", FormMethod.Post, new { @class = "form-product__update",  }))
+@using (Html.BeginForm("Update", "Product", FormMethod.Post, new { @class = "form-product__update", }))
 {
 
     @Html.EditorFor(x => x.Product)
 
     <button type="submit">Update product</button>
 }
+<div class="row">
+    <div class="col-md-7">
+        @foreach (var parent in Model.Types)
+        {
+            using (Html.BeginForm("SelectType", "Product", FormMethod.Post))
+            {
+                @Html.Hidden("productId", Model.Product.ProductId)
+                @Html.Hidden("categoryId", Model.Category.CategoryId)
+                <br />
+                <p>@parent.Title</p>
+                @Html.DropDownList("typeId", new MultiSelectList(parent.Types1, "TypeId", "Title"))
+                <button type="submit">Update @parent.Title</button>
+            }
+        }
+
+    </div>
+    <div class="col-md-5">
+        <ul>
+            @foreach (var parent in Model.Product.Types)
+            {
+                using (Html.BeginForm("RemoveType", "Product", FormMethod.Post, new { @class = "remove-type" }))
+                {
+                @Html.Hidden("productId", Model.Product.ProductId)
+                @Html.Hidden("categoryId", Model.Category.CategoryId)
+                @Html.Hidden("typeId", parent.TypeId)
+                    <button type="submit">-</button>
+                <li>@parent.Title</li>
+                }
+            }
+        </ul>
+
+    </div>
+</div>

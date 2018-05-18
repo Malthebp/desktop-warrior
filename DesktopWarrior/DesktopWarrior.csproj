@@ -215,6 +215,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ViewModels\BuildYourRig\ByrLine.cs" />
     <Compile Include="Models\ViewModels\ByrViewModel.cs" />
+    <Compile Include="Models\ViewModels\ListProductsViewModel.cs" />
     <Compile Include="Models\ViewModels\UpdateProductViewModel.cs" />
     <Compile Include="Models\ViewModels\CreateProductViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -290,6 +291,8 @@
     <Content Include="Views\Authentication\Product\Forms\cpu.cshtml" />
     <Content Include="Views\Byr\Index.cshtml" />
     <Content Include="Views\Byr\ProductPartial.cshtml" />
+    <Content Include="Views\Authentication\Product\Update.cshtml" />
+    <Content Include="Views\Authentication\Product\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

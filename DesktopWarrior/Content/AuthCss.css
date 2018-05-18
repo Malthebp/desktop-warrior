@@ -79,3 +79,6 @@
     font-size: 15px;
     font-weight: 400;
 }
+form.remove-type {
+    display: flex;
+}

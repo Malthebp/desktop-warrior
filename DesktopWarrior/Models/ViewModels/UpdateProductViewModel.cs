@@ -8,5 +8,6 @@ namespace DesktopWarrior.Models.ViewModels
         public Product Product { get; set; }
         public Category Category { get; set; }
         public List<Category> Categories { get; set; }
+        public ICollection<Type> Types { get; set; }
     }
 }

@@ -13,6 +13,8 @@ namespace DesktopWarrior.DAL.Interfaces
         List<Product> GetProductsByCategory(int categoryId);
         Product GetProductById(int productId);
         List<Product> GetCompatibleProducts(int catId, int[] typeIds);
+        void AttachTypeToProduct(int typeId, int productId);
+        void DetachTypeFromProduct(int typeId, int productId);
         void InsertProduct(Product product);
         void DeleteProduct(int productId);
         void UpdateProduct(Product product);

@@ -232,6 +232,10 @@ GO
 IF OBJECT_ID('getProducts', 'P') IS NOT NULL
 	DROP PROC getProducts
 GO
+
+IF OBJECT_ID('attachTypeProduct', 'P') IS NOT NULL
+	DROP PROC attachTypeProduct
+GO
 CREATE PROC dbo.getProducts
 	@CategoryID VARCHAR(10),
 	@ChildIDs VARCHAR(1000)
@@ -244,3 +248,15 @@ AS
 	EXEC sp_executesql @sql
 GO
 EXEC dbo.getProducts 2, '17,4';
+
+GO
+
+CREATE PROC attachTypeProduct
+	@ProductId INT,
+	@TypeId INT
+AS
+	INSERT INTO dbo.dg_ProductsTypes (ProductId, TypeId) VALUES (@ProductId, @TypeId)
+GO
+
+
+	EXEC attachTypeProduct 2, 2

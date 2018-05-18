@@ -40,7 +40,8 @@ namespace DesktopWarrior.Controllers
             else
             {
                 var products = _repository.GetProductsByCategory(categoryId);
-                return View(_authProductViewPath + "List.cshtml", products);
+                var category = _categoryRep.GetCategoryById(categoryId);
+                return View(_authProductViewPath + "List.cshtml", new ListProductViewModel() { Products = products, Category = category });
 
             }
         }
@@ -54,21 +55,22 @@ namespace DesktopWarrior.Controllers
             if (productType == null)
             {
                 return View(_authProductViewPath + "Create.cshtml", categories);
-            } else
+            }
+            else
             {
                 var category = categories.Find(x => x.UrlFriendlyTitle == productType);
 
-                return View(_authProductViewPath + "CreateForm.cshtml", new CreateProductViewModel() { Category = category, Categories = categories, Product = new Product()});
+                return View(_authProductViewPath + "CreateForm.cshtml", new CreateProductViewModel() { Category = category, Categories = categories, Product = new Product() });
             }
         }
 
         [Authorize]
         [HttpPost]
-        public ActionResult Create (Product product)
+        public ActionResult Create(Product product)
         {
             _repository.InsertProduct(product);
             _repository.Save();
-            return View(_authProductViewPath + "Index.cshtml");
+            return RedirectToAction("Update", "Product", new { productId = product.ProductId });
         }
 
         [Authorize]
@@ -78,20 +80,20 @@ namespace DesktopWarrior.Controllers
             var product = _repository.GetProductById(productId);
             var categories = _categoryRep.GetCategories();
             var category = _categoryRep.GetCategoryById(Convert.ToInt16(product.CategoryId));
-            return View(_authProductViewPath + "update.cshtml", new UpdateProductViewModel() {Category = category, Categories = categories, Product = product });
+            return View(_authProductViewPath + "update.cshtml", new UpdateProductViewModel() { Category = category, Categories = categories, Product = product, Types = category.Types });
 
         }
 
         [Authorize]
         [HttpPost]
-        public ActionResult Update(Product product)
+        public RedirectToRouteResult Update(Product product)
         {
             _repository.UpdateProduct(product);
             _repository.Save();
             var categories = _categoryRep.GetCategories();
             var category = _categoryRep.GetCategoryById(Convert.ToInt16(product.CategoryId));
-            return View(_authProductViewPath + "update.cshtml", new UpdateProductViewModel() {Category = category, Categories = categories, Product = product });
 
+            return RedirectToAction("Update", "Product", new { productId = product.ProductId });
         }
 
         [Authorize]
@@ -104,9 +106,29 @@ namespace DesktopWarrior.Controllers
         }
 
         [Authorize]
-        public PartialViewResult GetFormType (string type, Product product)
+        public PartialViewResult GetFormType(string type, Product product)
         {
             return PartialView(_authProductViewPath + "Forms/" + type + ".cshtml", product);
+        }
+        
+        [Authorize]
+        [HttpPost]
+        public RedirectToRouteResult SelectType(int typeId, int productId, int categoryId)
+        {
+            _repository.AttachTypeToProduct(typeId, productId);
+            
+            return RedirectToAction("Update", "Product", new { productId = productId });
+
+        }
+
+        [Authorize]
+        [HttpPost]
+        public RedirectToRouteResult RemoveType(int typeId, int productId, int categoryId)
+        {
+            _repository.DetachTypeFromProduct(typeId, productId);
+
+            return RedirectToAction("Update", "Product", new { productId = productId });
+
         }
     }
 }

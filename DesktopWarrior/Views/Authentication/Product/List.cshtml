@@ -1,5 +1,6 @@
 ﻿@using DesktopWarrior.Models
-@model List<Product>
+@using DesktopWarrior.Models.ViewModels
+@model ListProductViewModel
 
 @{
     ViewBag.Title = "Product list";
@@ -7,7 +8,7 @@
 }
 <h1 class="row">Overview of products</h1>
 <div class="row db-product">
-    @foreach (Product prod in Model)
+    @foreach (Product prod in Model.Products)
     {
         <h3>@prod.Title</h3> 
         <a href="@Url.Action("Update", "Product", new { productId = prod.ProductId})">
@@ -25,4 +26,8 @@
             </section>
         </div>
     }
+
+    <a class="col-md-4" href="@Url.Action("Create", "Product", new { productType = Model.Category.UrlFriendlyTitle })">
+        <h3>Create a new @Model.Category.Title</h3>
+    </a>
 </div>
