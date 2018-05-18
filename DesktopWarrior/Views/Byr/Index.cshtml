@@ -25,58 +25,59 @@
     </header>
 }
 
-    <main class="row">
-    <aside class="byr__preview col-md-4">
+<main class="row">
+    <aside class="byr__preview col-md-4  col-sm-12 ">
         <img class="byr__preview-img" src="https://i.imgur.com/p4hzBtz.jpg">
 
-            <div class="byr__added-wrapper">
-                <div class="byr__added">
-                    <h2>Parts added</h2> <br />
-                    @foreach (Category cat in Model.Categories)
+        <div class="byr__added-wrapper">
+            <div class="byr__added">
+                <h2>Parts added</h2> <br />
+                @foreach (Category cat in Model.Categories)
+                {
+                    if (Model.Build.HasCategory(cat.CategoryId))
                     {
-                        if (Model.Build.HasCategory(cat.CategoryId))
                         {
-                            {
-                                Product product = Model.Build.getLineForCategory(cat.CategoryId).Product;
-                            
-                                         <div class="byr__product-line-wrapper-1">
-                                             <button class="byr__product-sub">-</button>
-                                             <div class="byr__product-line-wrapper-2">
-                                                 <p><b>@cat.Title:</b></p>
-                                                 <div class="byr__product-line">
-                                                     <span class="byr__product-title">@product.Title</span><span class="byr__product-price">$@product.Price</span>
-                                                 </div>
-                                             </div>
-                                         </div>
+                            Product product = Model.Build.getLineForCategory(cat.CategoryId).Product;
+
+                            <div class="byr__product-line-wrapper-1">
+                                <button class="byr__product-sub">-</button>
+                                <div class="byr__product-line-wrapper-2">
+                                    <p><b>@cat.Title:</b></p>
+                                    <div class="byr__product-line">
+                                        <span class="byr__product-title">@product.Title</span><span class="byr__product-price">$@product.Price</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <br />
+                    }
                 }
+
                 <br />
-            }
+            </div>
+            <div class="byr__total">
+                <p>Total Price</p><h2>$@Model.Build.TotalPrice</h2>
+            </div>
+        </div>
+
+        @using (Html.BeginForm("ProceedToCheckout", "Byr", FormMethod.Post, new { @class = "byr__purchase-form" }))
+            {
+            <button class="byr__checkout-btn" type="submit">Purchase</button>
         }
 
-                    <br />
-                </div>
-                <div class="byr__total">
-                    <p>Total Price</p><h2>$@Model.Build.TotalPrice</h2>
-                </div>
-            </div>
-
-            @using (Html.BeginForm("ProceedToCheckout", "Byr", FormMethod.Post, new { @class = "byr__purchase-form" }))
-            {
-                <button class="byr__checkout-btn" type="submit">Purchase</button>
-            }
-
     </aside>
-        <div class="col-md-8 byr">
-            <div class="byr__selector">
-                @foreach (Category cat in Model.Categories)
+    <div class="col-md-8 col-sm-12 byr">
+        <div class="byr__selector">
+            @foreach (Category cat in Model.Categories)
             {
-                    <a class="selector__select @(Model.Category.CategoryId == cat.CategoryId ? "active" : "" ) @(Model.Build.HasCategory(cat.CategoryId) ?  "done" : "")" href="@Url.Action("Index", "Byr", new { id = cat.CategoryId })">
-                        @Html.Raw(cat.Icon)
-                        <span>@cat.Title</span>
-                        <div class="select__overlay"></div>
-                    </a>
-                }
-            </div>
+                <a class="selector__select @(Model.Category.CategoryId == cat.CategoryId ? "active" : "" ) @(Model.Build.HasCategory(cat.CategoryId) ?  "done" : "")" href="@Url.Action("Index", "Byr", new { id = cat.CategoryId })">
+                    @Html.Raw(cat.Icon)
+                    <span>@cat.Title</span>
+                    <div class="select__overlay"></div>
+                </a>
+            }
+        </div>
+        <div>
             <div class="byr__content">
                 <div class="content__products">
                     <h2>Compatible products</h2>
@@ -86,7 +87,8 @@
                         {
                             @Html.Partial("ProductPartial", prod)
                         }
-                    } else
+                    }
+                    else
                     {
                         <h3>There are no compatible products. See the list of all products.</h3>
                     }
@@ -118,4 +120,5 @@
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+</main>
