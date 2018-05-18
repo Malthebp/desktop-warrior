@@ -17,10 +17,8 @@ namespace DesktopWarrior.Controllers
         }
         public ActionResult Index()
         {
-            var category = _categoryRep.GetCategoryById(4);
-            var products = _repository.GetProductsByCategory(4);
 
-            return View(new HomeViewModel() { Products = products, Category = category });
+            return View();
         }
     }
 }
