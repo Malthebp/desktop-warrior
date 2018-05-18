@@ -68,3 +68,14 @@
 .db-product h3 {
     padding: 5px 15px;
 }
+
+.form-product__update input {
+    width: 50%;
+}
+.form-product__update .editor-label {
+    margin-top: 10px;
+}
+.form-product__update .editor-label label {
+    font-size: 15px;
+    font-weight: 400;
+}
