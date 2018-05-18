@@ -3,6 +3,7 @@ using DesktopWarrior.DAL.Interfaces;
 using DesktopWarrior.DAL.Repositories;
 using DesktopWarrior.Models;
 using DesktopWarrior.Models.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Web.Mvc;
@@ -75,7 +76,21 @@ namespace DesktopWarrior.Controllers
         public ActionResult Update(int productId)
         {
             var product = _repository.GetProductById(productId);
-            return View(_authProductViewPath + "update.cshtml", product);
+            var categories = _categoryRep.GetCategories();
+            var category = _categoryRep.GetCategoryById(Convert.ToInt16(product.CategoryId));
+            return View(_authProductViewPath + "update.cshtml", new UpdateProductViewModel() {Category = category, Categories = categories, Product = product });
+
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Update(Product product)
+        {
+            _repository.UpdateProduct(product);
+            _repository.Save();
+            var categories = _categoryRep.GetCategories();
+            var category = _categoryRep.GetCategoryById(Convert.ToInt16(product.CategoryId));
+            return View(_authProductViewPath + "update.cshtml", new UpdateProductViewModel() {Category = category, Categories = categories, Product = product });
 
         }
 

@@ -1,37 +1,21 @@
 ﻿@using DesktopWarrior.Models
-@model Product
+@using DesktopWarrior.Models.ViewModels
+@model UpdateProductViewModel
 
 @{
     ViewBag.Title = "CreateForm";
     Layout = "~/Views/Shared/_AuthLayout.cshtml";
 }
 
+
+<a class="col-md-4 product-type" href="@Url.Action("AuthProductIndex", "Product", new { productType = Model.Category.UrlFriendlyTitle, categoryId = Model.Product.CategoryId })">
+    <h3>GO BACK</h3>
+</a>
 <h2>Update the current product</h2>
-@using (Html.BeginForm("Update", "Product", FormMethod.Post, new { @class = "form-product__create" }))
+@using (Html.BeginForm("Update", "Product", FormMethod.Post, new { @class = "form-product__update",  }))
 {
-    @Html.LabelFor(x => x.CategoryId)
-    @Html.TextBoxFor(x => x.CategoryId)
 
-    @Html.LabelFor(x => x.Title)
-    @Html.EditorFor(x => x.Title)
-
-    @Html.LabelFor(x => x.Description)
-    @Html.EditorFor(x => x.Description)
-
-    @Html.LabelFor(x => x.Image)
-    @Html.EditorFor(x => x.Image)
-
-    @Html.LabelFor(x => x.Price)
-    @Html.EditorFor(x => x.Price)
-
-    @Html.LabelFor(x => x.Stock)
-    @Html.EditorFor(x => x.Stock)
-
-    @Html.LabelFor(x => x.Video)
-    @Html.EditorFor(x => x.Video)
-
-    @Html.LabelFor(x => x.Types)
-    @Html.EditorFor(x => x.Types)
+    @Html.EditorFor(x => x.Product)
 
     <button type="submit">Update product</button>
 }
