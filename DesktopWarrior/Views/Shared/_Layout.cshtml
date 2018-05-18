@@ -12,10 +12,17 @@
 <body>
     <nav class="main-navigation">
         <div class="container">
-            <a href="@Url.Action("Index", "Home")" class="main-navigation__logo">
-                <img src="~/Content/Images/desktop_guys_logo.svg" alt="Logo"/>
-            </a>
-            <ul>
+            <div class="main-navigation__bar">
+                <a href="@Url.Action("Index", "Home")" class="main-navigation__logo">
+                    <img src="~/Content/Images/desktop_guys_logo.svg" alt="Logo" />
+                </a>
+                <div class="menu-dropdown" id="navigation-toggle">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+            <ul id="navigation-list">
                 <li><a href="@Url.Action("Index", "Byr")">Build your rig</a></li>
                 <li><a href="#">Guide</a></li>
                 <li><a href="#">About</a></li>
