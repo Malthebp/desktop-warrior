@@ -82,3 +82,20 @@
 form.remove-type {
     display: flex;
 }
+
+.product-category {
+    display: flex;
+    height: 100px;
+    align-items: center;
+    border-bottom: 1px solid #7d7d7d;
+}
+
+.product-category h3 {
+    font-size: 20px;
+    padding: 0 20px;
+}
+
+.product-category svg {
+      fill: #366479;
+      height: 50px;
+}

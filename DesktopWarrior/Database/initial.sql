@@ -217,10 +217,10 @@ BEGIN
 	(2, 16),
 	(2, 17),
 	(2, 18),
-	(3, 31),
+	(3, 32),
 	(3, 20),
-	(4, 16)
-
+	(4, 16),
+	(3, 17)
 
 
 END
@@ -247,7 +247,7 @@ AS
 
 	EXEC sp_executesql @sql
 GO
-EXEC dbo.getProducts 2, '17,4';
+EXEC dbo.getProducts 4, '33';
 
 GO
 

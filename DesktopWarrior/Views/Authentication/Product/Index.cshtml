@@ -10,7 +10,8 @@
 <div class="row">
     @foreach (Category cat in Model)
     {
-        <a class="col-md-4 product-type" href="@Url.Action("AuthProductIndex", "Product", new { productType = cat.UrlFriendlyTitle, categoryId = cat.CategoryId })">
+        <a class="col-md-12 product-category" href="@Url.Action("AuthProductIndex", "Product", new { productType = cat.UrlFriendlyTitle, categoryId = cat.CategoryId })">
+            @Html.Raw(cat.Icon)
             <h3>@cat.Title</h3>
         </a>
     }

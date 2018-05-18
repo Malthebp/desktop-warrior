@@ -270,7 +270,7 @@ html {
 }
 
 .all-products {
-    margin-top: 16px;
+    margin: 16px 0;
 }
 
 .content__products {
@@ -297,7 +297,7 @@ html {
     }
 
 .content__product {
-    width: 100%;
+    width: 98%;
     height: auto;
     display: flex;
     justify-content: space-between;
