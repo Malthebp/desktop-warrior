@@ -29,11 +29,17 @@ namespace DesktopWarrior.DAL.Repositories
 
         public List<Product> GetCompatibleProducts(int catId, int[] typeIds)
         {
-            var sql1 = new SqlParameter("@CategoryID", catId);
-            var sql2 = new SqlParameter("@ChildIDs", string.Join("", typeIds));
+            if(typeIds.Length > 0) {
+                var joinedInts = string.Join(",", typeIds.Select(x => x.ToString()).ToArray());
+                var sql1 = new SqlParameter("@CategoryID", catId);
+                var sql2 = new SqlParameter("@ChildIDs", joinedInts);
 
-            var products = context.Products.SqlQuery("exec getProducts @CategoryID, @ChildIDs", sql1, sql2).ToList();
-            return products;
+                var products = context.Products.SqlQuery("exec getProducts @CategoryID, @ChildIDs", sql1, sql2).ToList();
+                return products;
+            } else
+            {
+                return new List<Product>();
+            }
         }
 
         public List<Product> GetProducts()

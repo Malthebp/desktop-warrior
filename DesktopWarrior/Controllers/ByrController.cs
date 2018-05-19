@@ -66,11 +66,21 @@ namespace DesktopWarrior.Controllers
 
             var categories = _categoryRep.GetCategories();
             var category = categories.Find(x => x.CategoryId == catId);
-            var ids = new Product().GetCompatibleIds(catId, byr, categories);
 
-            var compProducts = _productRep.GetCompatibleProducts(catId, new int[] { 17 });
+            var ids = new Product().GetCompatibleIds(catId, byr);
 
-            var model = new ByrViewModel() { Categories = categories, Category = category, Build = byr, CompatibleProducts = compProducts };
+            var compProducts = _productRep.GetCompatibleProducts(catId, ids.ToArray());
+            var compatibleProducts = new List<Product>();
+
+            foreach(var p in compProducts)
+            {
+                if (!compatibleProducts.Any(x => x.ProductId == p.ProductId))
+                {
+                    compatibleProducts.Add(p);
+                }
+            }
+
+            var model = new ByrViewModel() { Categories = categories, Category = category, Build = byr, CompatibleProducts = compatibleProducts };
 
             return model;
         }
