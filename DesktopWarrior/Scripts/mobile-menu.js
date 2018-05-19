@@ -1,5 +1,3 @@
 ﻿$("#navigation-toggle").click(function () {
-    $("#navigation-list").addClass("visible");
+    $("#navigation-list").toggle("fast");
 });
-
-console.log("working");

@@ -56,7 +56,7 @@ namespace DesktopWarrior.Controllers
             }
             var id = catId;
             
-            return RedirectToAction("Index", new { controller = returnUrl.Substring(1) });
+            return RedirectToAction("Index", "Byr", new { id = catId});
         }
 
 

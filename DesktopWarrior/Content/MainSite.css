@@ -278,6 +278,9 @@ html {
     padding-bottom: 16px;
 }
 
+.byr__selector div{
+    display: flex;
+}
 .selector__select {
     position: relative;
     width: 60px;
@@ -287,7 +290,12 @@ html {
     align-items: center;
     justify-content: center;
     background-color: var(--main-blue-1);
+    box-shadow: var(--btn-dropshadow);
 }
+
+.selector__select:hover {
+    box-shadow: var(--btn-dropshadow-hover);
+} 
 
     .selector__select.active {
         background-color: var(--main-turquoise);
@@ -381,7 +389,7 @@ html {
     }
 
 .content__product {
-    width: 98%;
+    width: 100%;
     height: auto;
     display: flex;
     justify-content: space-between;
@@ -533,6 +541,7 @@ footer.main-footer {
     background: var(--main-turquoise);
     color: var(--main-white);
     padding: 36px 0;
+    margin-top: 100px;  
 }
 
 .footer__logo {
@@ -598,20 +607,39 @@ footer.main-footer {
         width: 25px;
         height: 25px;
     }
+
+    
+    .product__left div {
+        margin-left: 0;
+    }
+
+    .product__left div:first-child {
+        width: 25%;
+    }
+
+    .product__left div:last-child {
+        width: 70%;
+        margin-left: 5%;
+    }
+
 }
 
 /* Ipad small */
 @media only screen and (max-width: 768px) {
     .byr  {
-        display: flex;
+        /*display: flex;*/
     }
 
     .byr__selector {
-        max-height: 550px;
-        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
     }
     .selector__select.active:before {
         display: none;
+    }
+
+    .selector__select {
+        margin: 3px 0;
     }
 
 
@@ -659,6 +687,7 @@ footer.main-footer {
 
     .main-navigation ul.visible {
         display: block;
+        transition: display 0.3s ease-in-out;
     }
 
     .main-navigation ul li a {
@@ -672,8 +701,50 @@ footer.main-footer {
         border-right: none;
         width: 100%;
     }
+
+    .content__product {
+        flex-direction: column;
+    }
+
+    .product__right {
+
+    }
+
+    .product__add {
+        width: 100%;
+    }
+
+    .footer__navigation {
+        margin: 16px 0;
+    }
+
+    .footer__logo {
+        margin-bottom: 16px;
+    }
 }
 
 /* Mobile */
 @media only screen and (max-width: 576px) {
+
+    .content__product img {
+        width: 60px;
+    }
+
+    .footer__logo {
+        width: 75px;
+    }
+
+    .content__search {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .content__search input, .content__search select {
+        width: 100%;
+    }
+
+    .search__sort {
+        margin-top: 16px;
+    }
+
 }
