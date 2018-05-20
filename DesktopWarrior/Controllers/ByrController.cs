@@ -55,12 +55,21 @@ namespace DesktopWarrior.Controllers
                 }
             }
             var id = catId;
-            
-            return RedirectToAction("Index", "Byr", new { id = catId});
+
+            return RedirectToAction("Index", "Byr", new { id = catId });
         }
 
+        [HttpGet]
+        public RedirectToRouteResult removeFromBuild(Byr byr, int productId)
+        {
+            var product = _productRep.GetProductById(productId);
+            byr.RemoveItem(product);
+            var id = Url.RequestContext.RouteData.Values["id"];
+            return RedirectToAction("Index", "Byr");
+        } 
 
-        private ByrViewModel CreateByrViewModel (Byr byr, int catId = 0)
+
+            private ByrViewModel CreateByrViewModel (Byr byr, int catId = 0)
         {
             catId = catId == 0 ? 1 : catId;
 
