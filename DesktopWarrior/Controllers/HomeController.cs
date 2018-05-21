@@ -8,7 +8,6 @@ namespace DesktopWarrior.Controllers
     public class HomeController : Controller
     {
 
-        private ICategoryRepository _categoryRep;
         private IProductRepository _repository;
         public HomeController()
         {

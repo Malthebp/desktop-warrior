@@ -45,66 +45,19 @@ namespace DesktopWarrior.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Type> Types { get; set; }
 
-        public int[] GetCompatibleIds (int catId, Byr byr, List<Category> categories)
+        public int[] GetCompatibleIds(int catId, Byr byr)
         {
-            var ids = new int[0];
-            switch (catId)
-            {
-                case 1:
-                    ids = GetCpuTypes(catId, byr);
-                    break;
-                case 2:
-                    ids = GetCpuCoolerTypes(catId, byr);
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-                case 7:
-                    break;
-                case 8:
-                    break;
+            var ids = new List<int>();
 
-            }
-            return ids;
-        }
-
-        private int[] GetCpuCoolerTypes(int catId, Byr byr)
-        {
-            var productMb = byr.GetProductInLineByCategoryId(3);
-            var productCpu = byr.GetProductInLineByCategoryId(1);
-            var ids = new int[0];
-            if (productMb != null && productCpu != null)
+            foreach (var line in byr.Lines)
             {
-                var mbIds = productMb.Types.Select(x => x.TypeId).ToArray();
-                var cpuIds = productCpu.Types.Select(x => x.TypeId).ToArray();
-                ids = mbIds.Concat(cpuIds).ToArray();
-            } else if (productMb != null)
-            {
-                ids = productMb.Types.Select(x => x.TypeId).ToArray();
-            } else if (productCpu != null)
-            {
-                ids = productCpu.Types.Select(x => x.TypeId).ToArray();
+                foreach (var type in line.Product.Types)
+                {
+                    ids.Add(type.TypeId);
+                }
             }
 
-            return ids;
-        }
-
-        private int[] GetCpuTypes (int catId, Byr byr)
-        {
-            var product = byr.GetProductInLineByCategoryId(3);
-            var ids = new int[0];
-
-            if(product != null)
-            {
-                ids = product.Types.Select(x => x.TypeId).ToArray();
-            }
-
-            return ids;
+            return ids.ToArray();
         }
     }
 }

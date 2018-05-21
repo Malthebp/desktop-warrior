@@ -6,6 +6,7 @@
     --secondary-yellow: #f2d26f;
     --main-blue-1: #354666;
     --main-blue-2: #366479;
+    --main-red-1: #e11b1a;
     --main-light: #f1f1f1;
     --byr-header-color: #366479;
     --btn-dropshadow: 0 1px 1px 0 rgba(60,64,67,.08), 0 1px 3px 1px rgba(60,64,67,.16);
@@ -251,9 +252,11 @@ section.home-hero {
     margin-right: 0.5em;
     border: 0;
     color: black;
-    background-color: red;
+    background-color: var(--main-red-1);
     font-family: 'Roboto Condensed', sans-serif;
     padding-bottom: 1px;
+    border-radius: 5px;
+    border-bottom: 1px solid black;
 }
 
 .byr__product-title {
@@ -388,6 +391,7 @@ section.home-hero {
 
 .byr__header-cat-name h1 {
     text-align: left;
+    font-size: 3.5em;
     font-weight: normal;
 }
 

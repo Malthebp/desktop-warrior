@@ -55,22 +55,41 @@ namespace DesktopWarrior.Controllers
                 }
             }
             var id = catId;
-            
-            return RedirectToAction("Index", "Byr", new { id = catId});
+
+            return RedirectToAction("Index", "Byr", new { id = catId });
         }
 
+        [HttpGet]
+        public RedirectToRouteResult removeFromBuild(Byr byr, int productId)
+        {
+            var product = _productRep.GetProductById(productId);
+            byr.RemoveItem(product);
+            var id = Url.RequestContext.RouteData.Values["id"];
+            return RedirectToAction("Index", "Byr");
+        } 
 
-        private ByrViewModel CreateByrViewModel (Byr byr, int catId = 0)
+
+            private ByrViewModel CreateByrViewModel (Byr byr, int catId = 0)
         {
             catId = catId == 0 ? 1 : catId;
 
             var categories = _categoryRep.GetCategories();
             var category = categories.Find(x => x.CategoryId == catId);
-            var ids = new Product().GetCompatibleIds(catId, byr, categories);
 
-            var compProducts = _productRep.GetCompatibleProducts(catId, new int[] { 17 });
+            var ids = new Product().GetCompatibleIds(catId, byr);
 
-            var model = new ByrViewModel() { Categories = categories, Category = category, Build = byr, CompatibleProducts = compProducts };
+            var compProducts = _productRep.GetCompatibleProducts(catId, ids.ToArray());
+            var compatibleProducts = new List<Product>();
+
+            foreach(var p in compProducts)
+            {
+                if (!compatibleProducts.Any(x => x.ProductId == p.ProductId))
+                {
+                    compatibleProducts.Add(p);
+                }
+            }
+
+            var model = new ByrViewModel() { Categories = categories, Category = category, Build = byr, CompatibleProducts = compatibleProducts };
 
             return model;
         }
