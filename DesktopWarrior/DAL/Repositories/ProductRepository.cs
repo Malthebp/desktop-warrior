@@ -18,8 +18,10 @@ namespace DesktopWarrior.DAL.Repositories
 
         public void DeleteProduct(int productId)
         {
-            var product = context.Products.Find(productId);
+            Product product = new Product() { ProductId = productId };
+            context.Products.Attach(product);
             context.Products.Remove(product);
+            context.SaveChanges();
         }
 
         public Product GetProductById(int productId)

@@ -14,12 +14,14 @@ namespace DesktopWarrior.Controllers
     {
         private IProductRepository _repository;
         private ICategoryRepository _categoryRep;
+        private ISpecificaitonRepository _specificationRep;
         private readonly string _authProductViewPath = "~/Views/Authentication/Product/";
 
         public ProductController()
         {
             _repository = new ProductRepository(new DesktopGuysContext());
             _categoryRep = new CategoryRepository(new DesktopGuysContext());
+            _specificationRep = new SpecificationRepository(new DesktopGuysContext());
         }
 
         // GET: Product
@@ -80,7 +82,8 @@ namespace DesktopWarrior.Controllers
             var product = _repository.GetProductById(productId);
             var categories = _categoryRep.GetCategories();
             var category = _categoryRep.GetCategoryById(Convert.ToInt16(product.CategoryId));
-            return View(_authProductViewPath + "update.cshtml", new UpdateProductViewModel() { Category = category, Categories = categories, Product = product, Types = category.Types });
+            var specifications = _specificationRep.GetSpecificationsByProductId(productId);
+            return View(_authProductViewPath + "update.cshtml", new UpdateProductViewModel() { Category = category, Categories = categories, Product = product, Types = category.Types, Specifications = specifications });
 
         }
 
@@ -94,6 +97,16 @@ namespace DesktopWarrior.Controllers
             var category = _categoryRep.GetCategoryById(Convert.ToInt16(product.CategoryId));
 
             return RedirectToAction("Update", "Product", new { productId = product.ProductId });
+        }
+
+        [Authorize]
+        [HttpGet]
+        public RedirectToRouteResult Remove(int productId, int categoryId)
+        {
+            _repository.DeleteProduct(productId);
+            var products = _repository.GetProductsByCategory(categoryId);
+            var category = _categoryRep.GetCategoryById(categoryId);
+            return RedirectToAction("AuthProductIndex", "Product", new { categoryId = categoryId});
         }
 
         [Authorize]
@@ -128,6 +141,27 @@ namespace DesktopWarrior.Controllers
             _repository.DetachTypeFromProduct(typeId, productId);
 
             return RedirectToAction("Update", "Product", new { productId = productId });
+
+        }
+
+        [Authorize]
+        [HttpGet]
+        public RedirectToRouteResult RemoveSpec(int specificationId, int productId)
+        {
+            _specificationRep.DeleteSpecification(specificationId);
+
+            return RedirectToAction("Update", "Product", new { productId = productId });
+
+        }
+
+        [Authorize]
+        [HttpPost]
+        public RedirectToRouteResult AddSpec(Specification specification)
+        {
+            _specificationRep.InsertSpecification(specification);
+            _specificationRep.Save();
+
+            return RedirectToAction("Update", "Product", new { productId = specification.ProductId });
 
         }
     }

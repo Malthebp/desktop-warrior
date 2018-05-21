@@ -99,3 +99,28 @@ form.remove-type {
       fill: #366479;
       height: 50px;
 }
+
+.product-update .types {
+    width: 50%;
+    border: 1px solid black;
+    margin: 20px 1px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.product-update .specs {
+    width: 50%;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+    .product-update .specs form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .product-update .specs .specs-each {
+        display: flex;
+        padding: 3px 0;
+    }

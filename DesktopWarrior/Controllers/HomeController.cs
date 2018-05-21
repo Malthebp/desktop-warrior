@@ -2,7 +2,6 @@
 using DesktopWarrior.DAL.Repositories;
 using System.Web.Mvc;
 using DesktopWarrior.Models.ViewModels;
-using DesktopWarrior.Models.ViewModels.BuildYourRig;
 
 namespace DesktopWarrior.Controllers
 {
@@ -14,11 +13,15 @@ namespace DesktopWarrior.Controllers
         public HomeController()
         {
             _repository = new ProductRepository(new DAL.DesktopGuysContext());
+            _categoryRep = new CategoryRepository(new DAL.DesktopGuysContext());
         }
+
         public ActionResult Index()
         {
-
-            return View();
+            int categoryId = 3;
+            var category = _categoryRep.GetCategoryById(categoryId);
+            var products = _repository.GetProductsByCategory(categoryId);
+            return View(new HomeViewModel() { Products = products, Category = category });
         }
     }
 }

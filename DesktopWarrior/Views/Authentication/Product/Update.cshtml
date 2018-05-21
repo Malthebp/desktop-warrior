@@ -19,36 +19,71 @@
 
     <button type="submit">Update product</button>
 }
-<div class="row">
-    <div class="col-md-7">
-        @foreach (var parent in Model.Types)
-        {
-            using (Html.BeginForm("SelectType", "Product", FormMethod.Post))
-            {
-                @Html.Hidden("productId", Model.Product.ProductId)
-                @Html.Hidden("categoryId", Model.Category.CategoryId)
-                <br />
-                <p>@parent.Title</p>
-                @Html.DropDownList("typeId", new MultiSelectList(parent.Types1, "TypeId", "Title"))
-                <button type="submit">Update @parent.Title</button>
-            }
-        }
-
-    </div>
-    <div class="col-md-5">
-        <ul>
-            @foreach (var parent in Model.Product.Types)
-            {
-                using (Html.BeginForm("RemoveType", "Product", FormMethod.Post, new { @class = "remove-type" }))
+<div class="row product-update">
+    <div class="types">
+        <div class="col-md-5">
+            <h3>All types</h3>
+            <ul>
+                @foreach (var parent in Model.Product.Types)
                 {
-                @Html.Hidden("productId", Model.Product.ProductId)
-                @Html.Hidden("categoryId", Model.Category.CategoryId)
-                @Html.Hidden("typeId", parent.TypeId)
-                    <button type="submit">-</button>
-                <li>@parent.Title</li>
+                    using (Html.BeginForm("RemoveType", "Product", FormMethod.Post, new { @class = "remove-type" }))
+                    {
+                        @Html.Hidden("productId", Model.Product.ProductId)
+                        @Html.Hidden("categoryId", Model.Category.CategoryId)
+                        @Html.Hidden("typeId", parent.TypeId)
+                        <button type="submit">-</button>
+                        <li>@parent.Title</li>
+                    }
+                }
+            </ul>
+
+        </div>
+        <div class="col-md-7">
+            <h3>Add Type</h3>
+            @foreach (var parent in Model.Types)
+            {
+                using (Html.BeginForm("SelectType", "Product", FormMethod.Post))
+                {
+                    @Html.Hidden("productId", Model.Product.ProductId)
+                    @Html.Hidden("categoryId", Model.Category.CategoryId)
+                    <br />
+                    <p>@parent.Title</p>
+                    @Html.DropDownList("typeId", new MultiSelectList(parent.Types1, "TypeId", "Title"))
+                    <button type="submit">Update @parent.Title</button>
                 }
             }
-        </ul>
+        </div>
+    </div>
+    <div class="specs">
+        <div>
+            <h3>All specifictions</h3>
+            @foreach (var spec in Model.Specifications)
+            {
+                <div class="specs-each">
+                    <a href="@Url.Action("RemoveSpec", "Product", new { specificationId = spec.SpecificationId, productId = spec.ProductId})">
+                        <p>remove</p>
+                    </a>
+                    <p><strong>@spec.Title</strong></p>
+                    <p>@spec.Description</p>
+                </div>
+            }
+        </div>
+        <div>
+            <h3>Add specifiction</h3>
 
+            @using (Html.BeginForm("AddSpec", "Product", FormMethod.Post))
+            {
+                @*@Html.Hidden("productId", Model.Product.ProductId)*@
+                @Html.LabelFor(x => x.Specification.ProductId)
+                @Html.EditorFor(x => x.Specification.ProductId)
+
+                @Html.LabelFor(x => x.Specification.Title)
+                @Html.EditorFor(x => x.Specification.Title)
+
+                @Html.LabelFor(x => x.Specification.Description)
+                @Html.EditorFor(x => x.Specification.Description)
+                <button type="submit">Add Specification</button>
+            }
+        </div>
     </div>
 </div>

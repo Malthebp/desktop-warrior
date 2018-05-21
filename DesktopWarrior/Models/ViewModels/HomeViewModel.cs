@@ -6,7 +6,6 @@ namespace DesktopWarrior.Models.ViewModels
     public class HomeViewModel
     {
         public Category Category { get; set; }
-        public Product Product { get; set; }
         public List<Product> Products { get; set; }
     }
 }

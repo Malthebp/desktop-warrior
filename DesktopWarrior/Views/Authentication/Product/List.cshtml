@@ -3,16 +3,19 @@
 @model ListProductViewModel
 
 @{
-    ViewBag.Title = "Product list";
+ViewBag.Title = "Product list";
     Layout = "~/Views/Shared/_AuthLayout.cshtml";
 }
 <h1 class="row">Overview of products</h1>
 <div class="row db-product">
     @foreach (Product prod in Model.Products)
     {
-        <h3>@prod.Title</h3> 
+        <h3>@prod.Title</h3>
         <a href="@Url.Action("Update", "Product", new { productId = prod.ProductId})">
             <p>Edit</p>
+        </a>
+        <a href="@Url.Action("Remove", "Product", new { productId = prod.ProductId, categoryId = prod.CategoryId})">
+            <p>remove</p>
         </a>
         <div class="db-products-detail">
             <section id="image">
