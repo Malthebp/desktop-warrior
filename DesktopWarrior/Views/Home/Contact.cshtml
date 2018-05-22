@@ -1,17 +1,36 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<header class="contact__header">
+    <div class="about__header-title">
+        <h1>How to contact us</h1>
+    </div>
+    <div class="about__header-description">
+        <div class="col-md-4 col-lg-4 col-sm-8 col-xs- about__desc-card">
+            <div>
+                <b>Contact us by email:</b><br />
+                <p>DesktopGuys@eaaa.students.dk</p>
+                <b>or</b><br />
+                <b>Give us a call</b><br />
+                <p>+45 12 34 56 78</p>
+            </div>
+        </div>
+    </div>
+</header>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<div class="contact__address-wrapper">
+    <div class="contact__address-top">
+        <h1>You can find us here in</h1>
+        <h1>Denmark, Aarhus</h1>
+    </div>
+
+    <p><b>Our address:</b></p>
+    <h2>Sønderhøj 30, 8260 Viby</h2>
+</div>
+
+<div class="contact__map">
+    <div class="wrapper">
+        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCaeSvATnoRs8sJSrprZuG4bKAhGXuBeKw&q=Sønderhøj+30,Aarhus+Viby" allowfullscreen></iframe>
+    </div>
+</div>

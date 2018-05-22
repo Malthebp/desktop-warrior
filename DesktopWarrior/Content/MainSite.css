@@ -28,10 +28,70 @@ html {
     min-height: 80vh;
 }
 
-/* About page?*/
-.about__header {
+/* Contact page*/
+.contact__address-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
 }
 
+.contact__address-wrapper p {
+    color: var(--main-blue-2);
+    font-weight:bold;
+}
+
+.contact__address-wrapper h2 {
+        color: var(--main-blue-2);
+        font-weight:unset;
+ }
+
+
+.contact__address-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    color: var(--main-turquoise);
+    font-weight:unset;
+}
+
+.contact__address-top h1 {
+    font-weight: unset;
+}
+
+.contact__map {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+    .contact__map .wrapper {
+        padding: 5px;
+        border: 1px solid var(--main-turquoise);
+        border-radius: 5px;
+        height: 450px;
+        width: 75%;
+    }
+
+    .contact__map .wrapper iframe {
+        height:100%;
+        width: 100%;
+    }
+
+@media only screen and (max-width: 992px) {
+    .contact__map .wrapper {
+        height: 450px;
+        width: 100%;
+    }
+}
+/* Contact page end*/
+
+
+/* About page?*/
 .about__header-title {
     display: flex;
     justify-content: center;
@@ -51,7 +111,14 @@ html {
     background-color: var(--main-blue-1);
     color: var(--main-white);
     text-align: center;
+    justify-content: center;
+    font-size: calc(1em + 0.5vw);
 }
+
+    .about__header-description div {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 
 .about__desc-card {
     border: 1px solid var(--main-white);
@@ -65,20 +132,45 @@ html {
     margin-bottom: 10px;
 }
 
-.about__card-wrapper{
+.about__card-wrapper {
     display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+    .about__card-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .about__card {
+        margin: 25px;
+    }
 }
 
 .about__card {
-    border: 1px solid var(--byr-header-color);
+    border: 1px solid var(--main-turquoise);
+    border-radius: 5px;
+    color: var(--main-turquoise);
+    height: 30em;
+    font-size: calc(0.8em + 0.6vw);
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 1em;
 }
 
 .about__card-img {
-    background: var(--byr-header-color);
+    background: var(--main-turquoise);
+    height: 40%;
+    border-radius: 5px;
+    margin-bottom: 1.5em;
 }
 
-.about__card-text{
-
+.about__card-text {
+    margin-bottom: 1.5em;
 }
 /* About page end*/
 
