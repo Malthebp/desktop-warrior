@@ -14,5 +14,8 @@ namespace DesktopWarrior.Models.ViewModels
         public Checkout Checkout { get; set; }
         public Byr Build { get; set; }
         public List<SelectListItem> PaymentMethods { get; set; }
+        public Payment Payment { get; set; }
+        public bool HasEditOptions { get; set; }
+
     }
 }

@@ -1,0 +1,130 @@
+﻿@using DesktopWarrior.Models.ViewModels.BuildYourRig
+@using DesktopWarrior.Models
+@using DesktopWarrior.Models.ViewModels
+@model CheckoutViewModel
+
+@{
+    ViewBag.Title = "Completed";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section byrHead
+{
+    <header class="byr__header">
+        <div class="byr__header-cat-name">
+            <div class="container">
+                <div class="col-md-12 col-xm-12 col-xs-12">
+                    <h1>Order and payment completed!</h1>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-title">
+            <div class="container">
+                <div class="col-md-12 col-xm-12 col-xs-12">
+                    <h3>Congratulations with your new computer, we hope you enjoyed building it!</h3>
+                </div>
+            </div>
+        </div>
+    </header>
+}
+
+<div class="container">
+    <div class="row checkout completed">
+        <div class="col-md-7">
+            <h2>Shipping details</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="completed__details">
+                        <h3>Personal details</h3>
+                        <div>
+                            @Html.LabelForModel("First name", Model.Checkout.FirstName)
+                            @Html.DisplayFor(x => x.Checkout.FirstName)
+                        </div>
+                        <div>
+                            @Html.LabelForModel("Last name", Model.Checkout.LastName)
+                            @Html.DisplayFor(x => x.Checkout.LastName)
+                        </div>
+                        <div>
+                            @Html.LabelForModel("Email", Model.Checkout.Email)
+                            @Html.DisplayFor(x => x.Checkout.Email)
+                        </div>
+                    </div>
+                    <div class="completed__details">
+                        <h3>Adress details</h3>
+                        <div>
+                            @Html.LabelFor(x => x.Checkout.Address)
+                            @Html.DisplayFor(x => x.Checkout.Address)
+                        </div>
+                        <div>
+                            @Html.LabelFor(x => x.Checkout.Zip)
+                            @Html.DisplayFor(x => x.Checkout.Zip)
+                        </div>
+                        <div>
+                            @Html.LabelFor(x => x.Checkout.City)
+                            @Html.DisplayFor(x => x.Checkout.City)
+                        </div>
+                        <div>
+                            @Html.LabelFor(x => x.Checkout.Country)
+                            @Html.DisplayFor(x => x.Checkout.Country)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 completed__details">
+                    <h3>Payment details</h3>
+                        <div>
+                            <label>Method</label>
+                            @Html.DisplayFor(x => x.Checkout.PaymentMethod)
+                        </div>
+                    
+                    @if(Model.Checkout.PaymentMethod == "Credit card / Debit card")
+                    {
+                        <div>
+                            <label>Card number</label>
+                            @Model.Payment.CardLastFour()
+                        </div>
+                        <div>
+                            <label>Card exp.</label>
+                            @Model.Payment.ExpMonth / @Model.Payment.ExpYear
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <label>Provider</label>
+                            @Model.Checkout.PaymentMethod
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="row thank-you">
+                <h2>Thank you!</h2>
+                <p>Thank you for purchasing your new computer at Desktop Guys.</p>
+                <p>We really hope you enjoyed building it.</p>
+                <p>If you have any questions please let us know at: <br /> <a href="mailto:info@desktopguys.com">info@desktopguys.com</a></p>
+            </div>
+        </div>
+        <div class="col-md-5 completed__preview">
+            <div>
+                <h2>Your order</h2>
+                <div class="completed__order">
+                    @foreach (ByrLine line in Model.Build.Lines)
+                    {
+                        <div class="preview">
+                            <div class="preview__content">
+                                <a href="#">@line.Product.Title</a>
+                                <a href="#">$@line.Product.Price</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="checkout__total">
+                <p>Total</p>
+                <h3>$@Model.Build.TotalPrice</h3>
+            </div>
+        </div>
+    </div>
+
+    @Html.ActionLink("Go to home", "Index", "Home", null, new { @class = "home-link" })
+</div>
+

@@ -109,7 +109,7 @@
                     </div>
                 </section>
                 <section class="form__row submit">
-                    <button type="submit" class="form__submit">Next</button>
+                    <button type="submit" class="form__submit" disabled="@(Model.Build.Lines.Count == 0)">Next</button>
                 </section>
             }
         </div>

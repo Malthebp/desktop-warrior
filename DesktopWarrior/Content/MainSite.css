@@ -474,7 +474,6 @@ section.home-hero {
 .byr__checkout-btn:hover {
     opacity: 0.8;
 }
-
 /* Build your rig */
 /* Header Start*/
 .byr__header-cat-name {
@@ -503,7 +502,8 @@ section.home-hero {
     text-align: center;
     background-color: var(--main-blue-1);
     color: var(--main-white);
-    height: 2.5em;
+    min-height: 2.5em;
+    padding: 6px 0;
 }
 
     .accordion-title .container {
@@ -1122,7 +1122,7 @@ footer.main-footer {
     cursor: pointer;
 }
 
-.checkout__form .form__submit:hover {
+.checkout__form .form__submit:not(:disabled):hover {
     opacity: 0.9;
 }
 
@@ -1130,6 +1130,72 @@ footer.main-footer {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.form__submit:disabled {
+    cursor: initial;
+    opacity: 0.5;
+}
+
+/*Completed order*/
+.checkout.completed h2 {
+    font-size: 1.9rem;
+}
+
+.completed__details {
+    margin-top: 16px;
+}
+
+.completed__details h3 {
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+.completed__details div {
+    display: flex;
+    font-size: 1.2rem;
+}
+
+.completed__details label{
+    width: 100px;
+    display: block;
+    font-weight: bold;
+}
+
+.completed__order {
+    margin-bottom: 32px;
+}
+
+.completed__order .preview__content {
+    margin-left: 0;
+}
+
+.completed__preview {
+    border-left: 1px solid var(--main-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.completed .thank-you {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    margin: 75px 0;
+}
+
+.completed .thank-you p {
+    font-size: 1.3rem;
+}
+
+.home-link {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    display: block;
+    text-align: center;
 }
 
 /* Ipad big */
@@ -1255,6 +1321,28 @@ footer.main-footer {
 
     .footer__build a {
         margin-top: 16px;
+    }
+
+    .byr__header-cat-name h1 {
+        font-size: 2rem;
+    }
+
+    .form__section {
+        margin-top: 5px;
+    }
+
+    .checkout__preview {
+        margin-top :25px;
+    }
+
+    .completed__preview {
+        border-left: none;
+        border-top: 1px solid var(--main-light);
+        padding-top: 16px;
+    }
+
+    .accordion-content .container {
+        display: block;
     }
 
 }

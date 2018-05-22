@@ -27,45 +27,56 @@
 <div class="container">
     <div class="row checkout">
         <div class="col-md-7 checkout__form">
-            <h2>Card information</h2>
-            @using (Html.BeginForm("Purchase", "Checkout"))
-            {
-                @Html.AntiForgeryToken()
-                <section class="form__row">
-                    <div class="form__section">
-                        @Html.LabelFor(x => x.Checkout.CardNumber)
-                        @Html.TextBoxFor(x => x.Checkout.CardNumber, new { placeholder = @Html.DisplayNameFor(m => m.Checkout.CardNumber) })
-                        @Html.ValidationMessageFor(model => model.Checkout.CardNumber, "", new { @class = "text-danger" })
-                    </div>
-                </section>
-                <section class="form__row">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form__section">
-                                @Html.LabelFor(x => x.Checkout.ExpMonth)
-                                @Html.TextBoxFor(x => x.Checkout.ExpMonth, new { placeholder = @Html.DisplayNameFor(m => m.Checkout.ExpMonth) })
-                                @Html.ValidationMessageFor(model => model.Checkout.ExpMonth, "", new { @class = "text-danger" })
+            @if (Model.Checkout.PaymentMethod == "Credit card / Debit card") { 
+                <h2>Card information</h2>
+                using (Html.BeginForm("Purchase", "Checkout"))
+                {
+                    @Html.AntiForgeryToken()
+                    <section class="form__row">
+                        <div class="form__section">
+                            @Html.LabelFor(x => x.Payment.CardNumber)
+                            @Html.TextBoxFor(x => x.Payment.CardNumber, new { placeholder = @Html.DisplayNameFor(m => m.Payment.CardNumber) })
+                            @Html.ValidationMessageFor(model => model.Payment.CardNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </section>
+                    <section class="form__row">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form__section">
+                                    @Html.LabelFor(x => x.Payment.ExpMonth)
+                                    @Html.TextBoxFor(x => x.Payment.ExpMonth, new { placeholder = @Html.DisplayNameFor(m => m.Payment.ExpMonth) })
+                                    @Html.ValidationMessageFor(model => model.Payment.ExpMonth, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <section class="form__section">
+                                    @Html.LabelFor(x => x.Payment.ExpYear)
+                                    @Html.TextBoxFor(x => x.Payment.ExpYear, new { placeholder = @Html.DisplayNameFor(m => m.Payment.ExpYear) })
+                                    @Html.ValidationMessageFor(model => model.Payment.ExpYear, "", new { @class = "text-danger" })
+                                </section>
+                            </div>
+                            <div class="col-md-4">
+                                <section class="form__section">
+                                    @Html.LabelFor(x => x.Payment.ControlNumber)
+                                    @Html.TextBoxFor(x => x.Payment.ControlNumber, new { placeholder = @Html.DisplayNameFor(m => m.Payment.ControlNumber) })
+                                    @Html.ValidationMessageFor(model => model.Payment.ControlNumber, "", new { @class = "text-danger" })
+                                </section>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <section class="form__section">
-                                @Html.LabelFor(x => x.Checkout.ExpYear)
-                                @Html.TextBoxFor(x => x.Checkout.ExpYear, new { placeholder = @Html.DisplayNameFor(m => m.Checkout.ExpYear) })
-                                @Html.ValidationMessageFor(model => model.Checkout.ExpYear, "", new { @class = "text-danger" })
-                            </section>
-                        </div>
-                        <div class="col-md-4">
-                            <section class="form__section">
-                                @Html.LabelFor(x => x.Checkout.ControlNumber)
-                                @Html.TextBoxFor(x => x.Checkout.ControlNumber, new { placeholder = @Html.DisplayNameFor(m => m.Checkout.ControlNumber) })
-                                @Html.ValidationMessageFor(model => model.Checkout.ControlNumber, "", new { @class = "text-danger" })
-                            </section>
-                        </div>
-                    </div>
-                </section>
+                    </section>
+                    <section class="form__row submit">
+                        <button type="submit" class="form__submit">Purchase</button>
+                    </section>
+                }
+            } else
+            {
+                using (Html.BeginForm("Purchase", "Checkout"))
+                {
+                <h2>Checkout with @Model.Checkout.PaymentMethod</h2>
                 <section class="form__row submit">
                     <button type="submit" class="form__submit">Purchase</button>
                 </section>
+                }
             }
         </div>
 

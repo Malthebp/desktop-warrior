@@ -204,6 +204,8 @@
     <Compile Include="DAL\Repositories\CategoryRepository.cs" />
     <Compile Include="Infrastructure\Attributes\ZipValidAttribute.cs" />
     <Compile Include="Models\Checkout.cs" />
+    <Compile Include="Models\ModelBinders\CheckoutModelBinder.cs" />
+    <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\ViewModels\CheckoutViewModel.cs" />
     <Compile Include="DAL\Repositories\SpecificationRepository.cs" />
     <Compile Include="Models\ViewModels\BuildYourRig\Byr.cs" />
@@ -311,6 +313,7 @@
     <Content Include="Views\Checkout\Index.cshtml" />
     <Content Include="Views\Checkout\BuildOverview.cshtml" />
     <Content Include="Views\Checkout\Payment.cshtml" />
+    <Content Include="Views\Checkout\Completed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

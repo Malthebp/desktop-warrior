@@ -1,9 +1,6 @@
-﻿using DesktopWarrior.Models.ModelBinders;
+﻿using DesktopWarrior.Models;
+using DesktopWarrior.Models.ModelBinders;
 using DesktopWarrior.Models.ViewModels.BuildYourRig;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -21,6 +18,7 @@ namespace DesktopWarrior
 
 
             ModelBinders.Binders.Add(typeof(Byr), new BuildYourRigModelBinder());
+            ModelBinders.Binders.Add(typeof(Checkout), new CheckoutModelBinder());
         }
     }
 }
