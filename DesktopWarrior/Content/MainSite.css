@@ -1368,4 +1368,8 @@ footer.main-footer {
     .search__sort {
         margin-top: 16px;
     }
+
+    .byr__added-wrapper {
+        width: 100%;
+    }
 }
