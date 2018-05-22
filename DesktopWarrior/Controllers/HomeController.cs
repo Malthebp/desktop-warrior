@@ -9,6 +9,7 @@ namespace DesktopWarrior.Controllers
     {
 
         private IProductRepository _repository;
+        private ICategoryRepository _categoryRep;
         public HomeController()
         {
             _repository = new ProductRepository(new DAL.DesktopGuysContext());
