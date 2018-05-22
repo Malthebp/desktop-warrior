@@ -235,6 +235,7 @@
     <Content Include="Content\Grid\bootstrap-grid.css" />
     <Content Include="Content\Grid\bootstrap-grid.min.css" />
     <Content Include="Content\Images\desktop_guys_logo.svg" />
+    <Content Include="Content\Images\error.svg" />
     <Content Include="Content\Images\filter_frontpage_hero_image.jpg" />
     <Content Include="Content\Images\indicator.svg" />
     <Content Include="Content\Images\star-stroke.svg" />
@@ -308,6 +309,8 @@
     <Content Include="Views\Authentication\Product\Update.cshtml" />
     <Content Include="Views\Authentication\Product\List.cshtml" />
     <Content Include="Views\Checkout\Index.cshtml" />
+    <Content Include="Views\Checkout\BuildOverview.cshtml" />
+    <Content Include="Views\Checkout\Payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

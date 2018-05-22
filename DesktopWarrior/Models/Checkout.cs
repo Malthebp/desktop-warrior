@@ -31,5 +31,18 @@ namespace DesktopWarrior.Models
         public string Country { get; set; }
         [DisplayName("Select payment method")]
         public string PaymentMethod { get; set; }
+
+        [DisplayName("Card number")]
+        [Required]
+        public string CardNumber { get; set; }
+        [DisplayName("Expire month")]
+        [Required]
+        public int? ExpMonth { get; set; }
+        [DisplayName("Expire year")]
+        [Required]
+        public int? ExpYear { get; set; }
+        [DisplayName("Control number")]
+        [Required]
+        public int? ControlNumber { get; set; }
     }
 }

@@ -1,0 +1,49 @@
+﻿@using DesktopWarrior.Models.ViewModels
+@using DesktopWarrior.Models.ViewModels.BuildYourRig
+@using DesktopWarrior.Models
+@model CheckoutViewModel
+
+<div class="col-md-5 checkout__preview">
+    @foreach (Category cat in Model.Categories)
+            {
+                if (Model.Build.HasCategory(cat.CategoryId))
+                {
+                    Product product = Model.Build.GetLineForCategory(cat.CategoryId).Product;
+
+            <div class="preview">
+                <div class="preview__header">
+                    @using (Html.BeginForm("RemoveFromBuild", "Byr", FormMethod.Get))
+                    {
+                        @Html.Hidden("productId", product.ProductId);
+                        <button class="byr__product-sub">-</button>
+                    }
+                    <a class="selector__select @(Model.Build.HasCategory(cat.CategoryId) ?  "done" : "")">
+                        @Html.Raw(cat.Icon)
+                    </a>
+                    <h3>@cat.Title</h3>
+                </div>
+                <div class="preview__content">
+                    <a href="#">@product.Title</a>
+                    <a href="#">$@product.Price</a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="preview">
+                <div class="preview__header">
+                    @Html.ActionLink("+", "Index", "Byr", new { id = cat.CategoryId }, new { @class = "byr__product-sub add" })
+                    <a class="selector__select @(Model.Build.HasCategory(cat.CategoryId) ?  "done" : "")">
+                        @Html.Raw(cat.Icon)
+                    </a>
+                    <h3>@cat.Title</h3>
+                </div>
+            </div>
+        }
+    }
+    <div class="checkout__total">
+        <p>Total</p>
+        <h3>$@Model.Build.TotalPrice</h3>
+    </div>
+</div>
+

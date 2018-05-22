@@ -1,0 +1,79 @@
+﻿@model DesktopWarrior.Models.ViewModels.CheckoutViewModel
+
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section byrHead
+{
+    <header class="byr__header">
+        <div class="byr__header-cat-name">
+            <div class="container">
+                <div class="col-md-12 col-xm-12 col-xs-12">
+                    <h1>Payment</h1>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-title">
+            <div class="container">
+                <div class="col-md-12 col-xm-12 col-xs-12">
+                </div>
+            </div>
+        </div>
+    </header>
+}
+
+<div class="container">
+    <div class="row checkout">
+        <div class="col-md-7 checkout__form">
+            <h2>Card information</h2>
+            @using (Html.BeginForm("Purchase", "Checkout"))
+            {
+                @Html.AntiForgeryToken()
+                <section class="form__row">
+                    <div class="form__section">
+                        @Html.LabelFor(x => x.Checkout.CardNumber)
+                        @Html.TextBoxFor(x => x.Checkout.CardNumber, new { placeholder = @Html.DisplayNameFor(m => m.Checkout.CardNumber) })
+                        @Html.ValidationMessageFor(model => model.Checkout.CardNumber, "", new { @class = "text-danger" })
+                    </div>
+                </section>
+                <section class="form__row">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form__section">
+                                @Html.LabelFor(x => x.Checkout.ExpMonth)
+                                @Html.TextBoxFor(x => x.Checkout.ExpMonth, new { placeholder = @Html.DisplayNameFor(m => m.Checkout.ExpMonth) })
+                                @Html.ValidationMessageFor(model => model.Checkout.ExpMonth, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <section class="form__section">
+                                @Html.LabelFor(x => x.Checkout.ExpYear)
+                                @Html.TextBoxFor(x => x.Checkout.ExpYear, new { placeholder = @Html.DisplayNameFor(m => m.Checkout.ExpYear) })
+                                @Html.ValidationMessageFor(model => model.Checkout.ExpYear, "", new { @class = "text-danger" })
+                            </section>
+                        </div>
+                        <div class="col-md-4">
+                            <section class="form__section">
+                                @Html.LabelFor(x => x.Checkout.ControlNumber)
+                                @Html.TextBoxFor(x => x.Checkout.ControlNumber, new { placeholder = @Html.DisplayNameFor(m => m.Checkout.ControlNumber) })
+                                @Html.ValidationMessageFor(model => model.Checkout.ControlNumber, "", new { @class = "text-danger" })
+                            </section>
+                        </div>
+                    </div>
+                </section>
+                <section class="form__row submit">
+                    <button type="submit" class="form__submit">Purchase</button>
+                </section>
+            }
+        </div>
+
+        @Html.Action("PartialBuildOverview", "Checkout", Model)
+    </div>
+</div>
+
+@section scripts  {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

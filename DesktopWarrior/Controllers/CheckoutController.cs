@@ -38,5 +38,29 @@ namespace DesktopWarrior.Controllers
             };
             return View(model);
         }
+
+        [HttpPost]
+        public ActionResult Payment(Byr byr, Checkout checkout)
+        {
+            if (checkout.FirstName != null)
+            { 
+                var model = new CheckoutViewModel()
+                {
+                    Categories = _catRepository.GetCategories(),
+                    Build = byr,
+                    Checkout = checkout
+                };
+                return View(model);
+            } else
+            {
+                return View("Index");
+            }
+        }
+
+        public PartialViewResult PartialBuildOverview(CheckoutViewModel obj)
+        {
+
+            return PartialView("~/Views/Checkout/BuildOverview.cshtml", obj);
+        }
     }
 }
