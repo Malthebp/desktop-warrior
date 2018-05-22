@@ -23,5 +23,17 @@ namespace DesktopWarrior.Controllers
             var products = _repository.GetProductsByCategory(categoryId);
             return View(new HomeViewModel() { Products = products, Category = category });
         }
+
+        public ActionResult About()
+        {
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+
+            return View();
+        }
     }
 }

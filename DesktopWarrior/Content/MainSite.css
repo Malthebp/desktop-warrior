@@ -27,6 +27,62 @@ html {
 .body-content {
     min-height: 80vh;
 }
+
+/* About page?*/
+.about__header {
+}
+
+.about__header-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--main-white);
+    background-color: var(--byr-header-color);
+    height: 5em;
+}
+
+    .about__header-title h1 {
+        font-size: 3.5em;
+        font-weight: normal;
+    }
+
+.about__header-description {
+    display: flex;
+    background-color: var(--main-blue-1);
+    color: var(--main-white);
+    text-align: center;
+}
+
+.about__desc-card {
+    border: 1px solid var(--main-white);
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.about__desc-card div{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.about__card-wrapper{
+    display: flex;
+}
+
+.about__card {
+    border: 1px solid var(--byr-header-color);
+}
+
+.about__card-img {
+    background: var(--byr-header-color);
+}
+
+.about__card-text{
+
+}
+/* About page end*/
+
+
 /* Main navigation */
 .main-navigation {
     padding: 25px 0;
