@@ -51,7 +51,14 @@ html {
     background-color: var(--main-blue-1);
     color: var(--main-white);
     text-align: center;
+    justify-content: center;
+    font-size: calc(1em + 0.5vw);
 }
+
+    .about__header-description div {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 
 .about__desc-card {
     border: 1px solid var(--main-white);
@@ -65,20 +72,45 @@ html {
     margin-bottom: 10px;
 }
 
-.about__card-wrapper{
+.about__card-wrapper {
     display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+    .about__card-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .about__card {
+        margin: 25px;
+    }
 }
 
 .about__card {
-    border: 1px solid var(--byr-header-color);
+    border: 1px solid var(--main-turquoise);
+    border-radius: 5px;
+    color: var(--main-turquoise);
+    height: 30em;
+    font-size: calc(0.8em + 0.6vw);
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 1em;
 }
 
 .about__card-img {
-    background: var(--byr-header-color);
+    background: var(--main-turquoise);
+    height: 40%;
+    border-radius: 5px;
+    margin-bottom: 1.5em;
 }
 
-.about__card-text{
-
+.about__card-text {
+    margin-bottom: 1.5em;
 }
 /* About page end*/
 
