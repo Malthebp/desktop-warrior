@@ -34,29 +34,21 @@ namespace DesktopWarrior.Controllers
         [HttpGet]
         public RedirectToRouteResult AddToBuild(Byr byr, int productId, int catId, string returnUrl)
         {
-            var product = _productRep.GetProductById(productId);
-            var existProduct = byr.Lines.Where(x => x.Product.ProductId == productId).FirstOrDefault();
 
-            if (existProduct == null)
+            var product = _productRep.GetProductById(productId);
+            var lineProduct = byr.Lines.Where(p => p.Product.CategoryId == catId).FirstOrDefault();
+
+            if(lineProduct == null || product.CategoryId != lineProduct.Product.CategoryId)
             {
                 byr.AddItem(product, 1);
             } else
             {
-                var sameCat = existProduct.Product.CategoryId == catId;
-                if (!sameCat)
-                {
-                    byr.AddItem(product, 1);
-                } else
-                {
-                    var line = byr.Lines.Where(p => p.Product.CategoryId == product.CategoryId).FirstOrDefault();
-
-                    byr.Lines.Remove(line);
-                    byr.AddItem(product, 1);
-                }
+                var sameCategoryProduct = byr.Lines.Where(p => p.Product.CategoryId == product.CategoryId).FirstOrDefault();
+                byr.Lines.Remove(sameCategoryProduct);
+                byr.AddItem(product, 1);
             }
-            var id = catId;
 
-            return RedirectToAction("Index", "Byr", new { id = catId });
+            return RedirectToAction("Index", "Byr", new { id = catId, productId = product.ProductId });
         }
 
         [HttpGet]
@@ -69,7 +61,7 @@ namespace DesktopWarrior.Controllers
         } 
 
 
-            private ByrViewModel CreateByrViewModel (Byr byr, int catId = 0)
+        private ByrViewModel CreateByrViewModel (Byr byr, int catId = 0)
         {
             catId = catId == 0 ? 1 : catId;
 

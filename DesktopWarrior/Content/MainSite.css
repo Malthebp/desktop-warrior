@@ -292,6 +292,7 @@ section.home-hero {
 .byr__product-line-wrapper-1 {
     display: flex;
     align-items: flex-start;
+    margin-top: 8px;
 }
 
 .byr__product-line-wrapper-2 {
@@ -306,7 +307,8 @@ section.home-hero {
 }
 
 .byr__product-sub {
-    width: 1.5em;
+    width: 2.5em;
+    height: 1.6rem;
     margin-top: 0.2em;
     margin-right: 0.5em;
     border: 0;
@@ -316,6 +318,17 @@ section.home-hero {
     padding-bottom: 1px;
     border-radius: 5px;
     border-bottom: 1px solid black;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--main-white);
+}
+
+.byr__product-sub.add {
+    background-color: var(--main-turquoise);
 }
 
 .byr__product-title {
@@ -359,6 +372,15 @@ section.home-hero {
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: bold;
     font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.byr__checkout-btn:hover {
+    opacity: 0.8;
 }
 
 /* Build your rig */
@@ -688,6 +710,7 @@ ul.description__types {
         box-shadow: none;
         border: 1px solid var(--main-turquoise);
         font-size: 1.1rem;
+        background: var(--main-white);
     }
 
 .header__stepper {
@@ -777,6 +800,246 @@ footer.main-footer {
     flex-direction: column;
     justify-content: space-between;
 }
+
+/* Checkout */
+.checkout {
+    border: 1px solid var(--main-turquoise);
+    margin: 50px 0;
+    padding: 16px;
+}
+
+.checkout__preview .preview:not(:first-child) {
+    padding-top: 16px;
+}
+.checkout__preview .preview:not(:last-child) {
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--main-light);
+}
+
+.preview__header {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.preview__header h3 {
+    margin-left: 0.5rem;
+    font-weight: normal;
+    font-size: 1.5rem;
+}
+
+.preview__header .byr__product-sub {
+    height: 25px;
+    margin-top: 0;
+    width: 35px;
+}
+
+.preview__header .selector__select {
+    width: 25px;
+    height: 25px;
+    box-shadow: none;
+}
+
+.preview__header .selector__select svg {
+    width: 15px;
+    height: 15px;
+}
+
+.preview__content {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 42px;
+    margin-top: 8px;
+}
+
+.preview__content a {
+    font-size: 1.3rem;
+    color: var(--main-turquoise);
+    text-decoration: none;
+}
+
+.checkout__total {
+    text-align: center;
+    border-top: 2px solid var(--main-turquoise);
+    border-bottom: 2px solid var(--main-turquoise);
+    color: var(--main-turquoise);
+    padding: 16px 0;
+}
+
+.checkout__total h3 {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.checkout__total p {
+    font-size: 1.2rem;
+}
+
+.checkout__form {
+    background-color: var(--main-blue-2);
+    border-radius: 3px;
+    padding: 24px 0;
+}
+
+.checkout__form h2 {
+    text-align: center;
+    color: var(--main-white);
+    font-size: 2rem;
+    font-weight: normal;
+    margin-bottom: 16px;
+}
+
+.form__row {
+    max-width: 550px;
+    margin: 16px auto;
+}
+
+.form__section {
+    position: relative;
+    display: block;
+}
+
+.checkout__form input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #b5b5b5; 
+}
+.checkout__form input::-moz-placeholder { /* Firefox 19+ */
+    color: #b5b5b5;
+}
+.checkout__form input:-ms-input-placeholder { /* IE 10+ */
+    color: #b5b5b5;
+}
+.checkout__form input:-moz-placeholder { /* Firefox 18- */
+    color: #b5b5b5;
+}
+
+.checkout__form .field-validation-error:before {
+    content: url('Images/error.svg');
+    margin-right: 5px;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    left: 0;
+    top: 6px;
+}
+
+.checkout__form .field-validation-error {
+    color: white;
+    padding-top: 5px;
+    display: block;
+    padding-left: 15px;
+    position: relative;
+}
+
+
+.checkout__form input {
+    width: 100%;
+    padding: 8px 4px;
+    background-color: var(--main-blue-1);
+    border: 1px solid var(--main-white);
+    outline: none;
+    border-radius: 3px;
+    color: var(--main-white);
+    font-size: 1.3rem;
+    max-width: initial;
+}
+
+.checkout__form label {
+    font-size: 1.6rem;
+    color: var(--main-white);
+}
+.checkout__form .section__radio label {
+    cursor: pointer;
+}
+
+.form__section.radio {
+    margin-top: 6px;
+}
+/* The container */
+.checkout__form .section__radio {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 1.3rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.checkout__form .section__radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: var(--main-blue-1);
+    border-radius: 50%;
+    border: 1px solid var(--main-white);
+}
+
+/* On mouse-over, add a grey background color */
+.checkout__form .section__radio:hover input ~ .checkmark {
+    background-color: var(--main-blue-2);
+}
+
+/* When the radio button is checked, add a blue background */
+.checkout__form .section__radio input:checked ~ .checkmark {
+    background-color: var(--main-blue-1);
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.checkout__form .section__radio input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.checkout__form .section__radio .checkmark:after {
+    top: 5px;
+    left: 5px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--main-yellow);
+}
+
+
+.checkout__form .form__submit {
+    width: 200px;
+    height: 50px;
+    background: var(--main-yellow);
+    border: none;
+    box-shadow: var(--btn-dropshadow);
+    color: var(--main-blue-1);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.checkout__form .form__submit:hover {
+    opacity: 0.9;
+}
+
+.form__row.submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Ipad big */
 @media only screen and (max-width: 992px) {
     /* Selector icons */
@@ -897,6 +1160,11 @@ footer.main-footer {
     .footer__logo {
         margin-bottom: 16px;
     }
+
+    .footer__build a {
+        margin-top: 16px;
+    }
+
 }
 /* Mobile */
 @media only screen and (max-width: 576px) {

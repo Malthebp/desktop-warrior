@@ -1,0 +1,167 @@
+﻿@using DesktopWarrior.Models.ViewModels
+@using DesktopWarrior.Models.ViewModels.BuildYourRig
+@using DesktopWarrior.Models
+@model CheckoutViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section byrHead
+{
+    <header class="byr__header">
+        <div class="byr__header-cat-name">
+            <div class="container">
+                <div class="col-md-12 col-xm-12 col-xs-12">
+                    <h1>Checkout</h1>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-title">
+            <div class="container">
+                <div class="col-md-12 col-xm-12 col-xs-12">
+                    <h3>Remember to read our purchasing policy!</h3>
+                    <button class="accordion-btn">Read now</button>
+                </div>
+            </div>
+        </div>
+    </header>
+}
+
+<div class="container">
+    <div class="row checkout">
+        <div class="col-md-7 checkout__form">
+            <h2>Shipping information</h2>
+            @using (Html.BeginForm("Purchase", "Checkout"))
+            {
+                @Html.AntiForgeryToken()
+                <section class="form__row">
+                    <label>Name</label>   
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form__section">
+                                @Html.TextBoxFor(x => x.Checkout.FirstName, new { placeholder = @Html.DisplayNameFor(m => m.Checkout.FirstName) })
+                                @Html.ValidationMessageFor(model => model.Checkout.FirstName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <section class="form__section">
+                                @Html.TextBoxFor(x => x.Checkout.LastName, new { placeholder = @Html.DisplayNameFor(m => m.Checkout.LastName) })
+                                @Html.ValidationMessageFor(model => model.Checkout.LastName, "", new { @class = "text-danger" })
+                            </section>
+                        </div>
+                    </div>
+                </section>
+                <section class="form__row">
+                    <div class="form__section">
+                        @Html.LabelFor(x => x.Checkout.Email)
+                        @Html.TextBoxFor(x => x.Checkout.Email, new { placeholder = @Html.DisplayNameFor(m => m.Checkout.Email) })
+                        @Html.ValidationMessageFor(model => model.Checkout.Email, "", new { @class = "text-danger" })
+                    </div>
+                </section>
+                <section class="form__row">
+                    <div class="form__section">
+                        @Html.LabelFor(x => x.Checkout.Address)
+                        @Html.TextBoxFor(x => x.Checkout.Address, new { placeholder = @Html.DisplayNameFor(m => m.Checkout.Address) })
+                        @Html.ValidationMessageFor(model => model.Checkout.Address, "", new { @class = "text-danger" })
+                    </div>
+                </section>
+                <section class="form__row">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form__section">
+                                @Html.TextBoxFor(x => x.Checkout.City, new { placeholder = @Html.DisplayNameFor(m => m.Checkout.City) })
+                                @Html.ValidationMessageFor(model => model.Checkout.City, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <section class="form__section">
+                                @Html.TextBoxFor(x => x.Checkout.Zip, new { placeholder = @Html.DisplayNameFor(m => m.Checkout.Zip) })
+                                @Html.ValidationMessageFor(model => model.Checkout.Zip, "", new { @class = "text-danger" })
+                            </section>
+                        </div>
+                    </div>
+                </section>
+                <section class="form__row">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <section class="form__section">
+                                @Html.TextBoxFor(x => x.Checkout.Country, new { placeholder = @Html.DisplayNameFor(m => m.Checkout.Country) })
+                                @Html.ValidationMessageFor(model => model.Checkout.Country, "", new { @class = "text-danger" })
+                            </section>
+                        </div>
+                    </div>
+                </section>
+                <section class="form__row">
+                    @Html.LabelFor(x => x.Checkout.PaymentMethod)
+                    <div class="form__section radio">
+                        @foreach (SelectListItem radio in Model.PaymentMethods)
+                        {
+                            <div class="section__radio">
+                                <label for="Checkout_PaymentMethod_@radio.Value">
+                                    @radio.Text
+                                    @Html.RadioButtonFor(x => x.Checkout.PaymentMethod, radio.Text, new { id = "Checkout_PaymentMethod_" + radio.Value, @checked =  radio.Selected })
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        }
+                    </div>
+                </section>
+                <section class="form__row submit">
+                    <button type="submit" class="form__submit">Next</button>
+                </section>
+            }
+        </div>
+
+        <div class="col-md-5 checkout__preview">
+            @foreach (Category cat in Model.Categories)
+            {
+                if (Model.Build.HasCategory(cat.CategoryId))
+                {
+                    Product product = Model.Build.GetLineForCategory(cat.CategoryId).Product;
+
+                    <div class="preview">
+                        <div class="preview__header">
+                            @using (Html.BeginForm("RemoveFromBuild", "Byr", FormMethod.Get))
+                            {
+                                @Html.Hidden("productId", product.ProductId);
+                                <button class="byr__product-sub">-</button>
+                            }
+                            <a class="selector__select @(Model.Build.HasCategory(cat.CategoryId) ?  "done" : "")">
+                                @Html.Raw(cat.Icon)
+                            </a>
+                            <h3>@cat.Title</h3>
+                        </div>
+                        <div class="preview__content">
+                            <a href="#">@product.Title</a>
+                            <a href="#">$@product.Price</a>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="preview">
+                        <div class="preview__header">
+                            @Html.ActionLink("+", "Index", "Byr", new { id = cat.CategoryId }, new { @class = "byr__product-sub add" })
+                            <a class="selector__select @(Model.Build.HasCategory(cat.CategoryId) ?  "done" : "")">
+                                @Html.Raw(cat.Icon)
+                            </a>
+                            <h3>@cat.Title</h3>
+                        </div>
+                    </div>
+                }
+            }
+            <div class="checkout__total">
+                <p>Total</p>
+                <h3>$@Model.Build.TotalPrice</h3>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section scripts  {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="@Url.Content("~/Scripts/zipcheckattribute.js")" type="text/javascript"></script>
+}

@@ -35,6 +35,7 @@ namespace DesktopWarrior.Models
         public virtual ICollection<Type> Types { get; set; }
 
         public string Icon { get; set; }
+        public byte IsCompatibleWithAll { get; set; }
 
         // Not mapped properties
         [NotMapped]

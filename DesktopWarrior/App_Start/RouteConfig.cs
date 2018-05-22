@@ -15,9 +15,9 @@ namespace DesktopWarrior
             routes.LowercaseUrls = true;
 
             routes.MapRoute(
-                name: "Product create",
-                url: "auth/product/{action}/{productType}",
-                defaults: new { controller = "Product", action = "AuthProductIndex", productType = UrlParameter.Optional }
+                name: "Product",
+                url: "auth/product/{action}/{productType}/{categoryId}",
+                defaults: new { controller = "Product", action = "AuthProductIndex", productType = UrlParameter.Optional, categoryId = UrlParameter.Optional}
             );
 
             routes.MapRoute(

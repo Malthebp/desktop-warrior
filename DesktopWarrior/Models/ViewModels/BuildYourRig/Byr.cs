@@ -46,7 +46,7 @@ namespace DesktopWarrior.Models.ViewModels.BuildYourRig
             }
         }
 
-        public ByrLine getLineForCategory(int catId)
+        public ByrLine GetLineForCategory(int catId)
         {
             var line = Lines.Where(x => x.Product.CategoryId == catId).FirstOrDefault();
             return line;

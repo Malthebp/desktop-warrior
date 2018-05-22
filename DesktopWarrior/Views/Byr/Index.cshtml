@@ -62,7 +62,7 @@ new ListItem { Text = "Lowest rated", Value = "3" },
                         if (Model.Build.HasCategory(cat.CategoryId))
                         {
                             {
-                                Product product = Model.Build.getLineForCategory(cat.CategoryId).Product;
+                                Product product = Model.Build.GetLineForCategory(cat.CategoryId).Product;
 
                                      <div class="byr__product-line-wrapper-1">
                                          @using (Html.BeginForm("RemoveFromBuild", "Byr", FormMethod.Get))
@@ -88,10 +88,9 @@ new ListItem { Text = "Lowest rated", Value = "3" },
                 </div>
             </div>
 
-        @using (Html.BeginForm("ProceedToCheckout", "Byr", FormMethod.Post, new { @class = "byr__purchase-form" }))
-        {
-            <button class="byr__checkout-btn" type="submit">Purchase</button>
-        }
+            <div class="byr__purchase-form">
+                @Html.ActionLink("Purchase", "Index", "Checkout", null, new { @class = "byr__checkout-btn" })
+            </div>
 
         </aside>
         <div class="col-md-8 col-sm-12 byr">
@@ -118,7 +117,17 @@ new ListItem { Text = "Lowest rated", Value = "3" },
                         }
                         else
                         {
+                            if (!Convert.ToBoolean(Model.Category.IsCompatibleWithAll))
+                            {
                             <h3>There are no compatible products. See the list of all products.</h3>
+                            }
+                            else
+                            {
+                                foreach (Product prod in Model.Category.Products)
+                                {
+                                    @Html.Partial("ProductPartial", prod)
+                                }
+                            }
                         }
                     </div>
                 </div>

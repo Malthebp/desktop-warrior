@@ -38,7 +38,7 @@ namespace DesktopWarrior.DAL.Repositories
 
                 var products = context.Products.SqlQuery("exec getProducts @CategoryID, @ChildIDs", sql1, sql2).ToList();
                 return products;
-            } else
+            } else 
             {
                 return new List<Product>();
             }
