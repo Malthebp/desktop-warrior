@@ -69,26 +69,26 @@ ViewBag.Title = "Home Page";
         </div>
         <div class="row">
             @foreach (Product prod in Model.Products)
-        {
-            if (counter > 3)
             {
-                break;
-            }
-            counter = counter + 1;
-            <div class="frontpage_latest-product col-md-3">
-                <div class="products-detail">
-                    <section id="image">
-                        <img src="@prod.Image">
-                    </section>
-                    <h3>@prod.Title</h3>
+                if (counter > 3)
+                {
+                    break;
+                }
+                counter = counter + 1;
+                <div class="frontpage_latest-product col-md-3">
+                    <div class="products-detail">
+                        <section id="image">
+                            <img src="@prod.Image">
+                        </section>
+                        <h3>@prod.Title</h3>
 
-                    <section class="specs">
-                        <p>Price: @prod.Price</p>
-                        <p>Stock: @prod.Stock</p>
-                    </section>
+                        <section class="specs">
+                            <p>Price: @prod.Price</p>
+                            <p>Stock: @prod.Stock</p>
+                        </section>
+                    </div>
                 </div>
-            </div>
-    }
+            }
         </div>
     </div>
 
