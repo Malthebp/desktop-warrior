@@ -672,6 +672,7 @@ section.home-hero {
     min-height: 150px;
     max-height: 500px;
     padding: 8px;
+    overflow-y: hidden;
 }
 
 .all-products {
@@ -702,7 +703,7 @@ section.home-hero {
     }
 
 .content__product {
-    width: 100%;
+    width: 98%;
     height: auto;
     display: flex;
     justify-content: space-between;
