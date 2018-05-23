@@ -155,7 +155,6 @@ html {
     border: 1px solid var(--main-turquoise);
     border-radius: 5px;
     color: var(--main-turquoise);
-    height: 30em;
     font-size: calc(0.8em + 0.6vw);
     margin-left: 10px;
     margin-right: 10px;
@@ -163,10 +162,17 @@ html {
 }
 
 .about__card-img {
-    background: var(--main-turquoise);
-    height: 40%;
+    height: 250px;
     border-radius: 5px;
     margin-bottom: 1.5em;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.about__card-img img {
+    width: 100%;
+    height: auto;
 }
 
 .about__card-text {
@@ -322,6 +328,10 @@ section.home-hero {
 .frontpage_latest .row {
     display: flex;
     justify-content: center;
+}
+
+.frontpage_latest-product {
+    margin-bottom: 16px;
 }
 
 .products-detail {
@@ -1345,6 +1355,10 @@ footer.main-footer {
         display: block;
     }
 
+    .about__card-img {
+        height: auto;
+    }
+
 }
 /* Mobile */
 @media only screen and (max-width: 576px) {
@@ -1372,4 +1386,57 @@ footer.main-footer {
     .byr__added-wrapper {
         width: 100%;
     }
+}
+
+
+
+
+/* Login form */
+.login__form {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login__form form {
+    width: 100%;
+}
+
+.login__form label {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.login__form .checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.login__form .checkbox input {
+    width: initial;
+    margin-right: 4px;
+}
+
+.login__form  input {
+    width: 100%;
+    max-width: 100%;
+    padding: 4px;
+    border-radius: 3px;
+}
+
+.login__form .form-group {
+    margin: 8px 0;
+}
+
+.form-group input[type=submit] {
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    background: var(--main-blue-1);
+    color: var(--main-white);
 }
