@@ -234,9 +234,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AuthCss.css" />
+    <Content Include="Content\Images\dg_favicon.png" />
     <Content Include="Content\Grid\bootstrap-grid.css" />
     <Content Include="Content\Grid\bootstrap-grid.min.css" />
     <Content Include="Content\Images\desktop_guys_logo.svg" />
+    <Content Include="Content\Images\dg_chris.png" />
+    <Content Include="Content\Images\dg_lukas.png" />
+    <Content Include="Content\Images\dg_malthe.png" />
+    <Content Include="Content\Images\dg_peter.png" />
     <Content Include="Content\Images\error.svg" />
     <Content Include="Content\Images\filter_frontpage_hero_image.jpg" />
     <Content Include="Content\Images\indicator.svg" />
