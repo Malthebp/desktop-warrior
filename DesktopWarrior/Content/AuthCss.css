@@ -65,12 +65,33 @@
     height: 100%;
 }
 
+.db-product .create-btn {
+    
+      display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 20px;
+}
+
 .db-product h3 {
     padding: 5px 15px;
 }
 
+.db-product a p {
+    padding: 7px 4px
+}
+
+.form-product__update {
+      width: 70%;
+    margin: 20px 1px;
+    border-radius: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px #848484;
+}
+
 .form-product__update input {
-    width: 50%;
+    width: 100%;
 }
 .form-product__update .editor-label {
     margin-top: 10px;
@@ -81,6 +102,14 @@
 }
 form.remove-type {
     display: flex;
+    padding: 5px 0;
+    align-items: center;
+}
+
+form.remove-type button {
+    padding: 0px 5px;
+    font-size: 12px;
+    margin-right: 5px;
 }
 
 .product-category {
@@ -101,18 +130,45 @@ form.remove-type {
 }
 
 .product-update .types {
-    width: 50%;
-    border: 1px solid black;
+    width: 70%;
     margin: 20px 1px;
     border-radius: 5px;
-    padding: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px #848484;
+}
+
+.product-update .types h3 {
+      font-weight: normal;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.product-update .types .add-type {
+    
+      margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #8c8c8c;
 }
 
 .product-update .specs {
-    width: 50%;
-    border: 1px solid black;
+    width: 70%;
     padding: 10px;
     border-radius: 5px;
+      box-shadow: 1px 1px 4px #848484;
+    margin-bottom: 50px;
+}
+
+.product-update .specs h3 {
+      font-weight: normal;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.product-update .specs .add-spec {
+      margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #8c8c8c;
 }
 
     .product-update .specs form {
@@ -120,7 +176,51 @@ form.remove-type {
         flex-direction: column;
     }
 
-    .product-update .specs .specs-each {
-        display: flex;
-        padding: 3px 0;
+    .product-update .specs table {
+      border-collapse: collapse;
+      width: 100%;
     }
+    
+.product-update .specs tr:nth-child(even){background-color: #f2f2f2;}
+
+.product-update .specs td, .product-update .specs th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.product-update .specs th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #379F9E;
+    color: white;
+
+}
+
+@media only screen and (max-width: 768px) {
+    .db-product {
+        width: 94%;
+    margin: 0 auto;
+    }
+
+    .form-product__update {
+        width: 100%;
+    }
+    .form-product__update input {
+        width: 100%;
+    }
+    
+.product-update .types {
+    width: 100%;
+    margin: 30px 1px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.product-update .specs {
+    width: 100%;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 5px;
+}
+}

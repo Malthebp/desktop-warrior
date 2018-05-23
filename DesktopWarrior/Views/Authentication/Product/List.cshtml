@@ -30,7 +30,7 @@ ViewBag.Title = "Product list";
         </div>
     }
 
-    <a class="col-md-4" href="@Url.Action("Create", "Product", new { productType = Model.Category.UrlFriendlyTitle })">
+    <a class="create-btn" href="@Url.Action("Create", "Product", new { productType = Model.Category.UrlFriendlyTitle })">
         <h3>Create a new @Model.Category.Title</h3>
     </a>
 </div>

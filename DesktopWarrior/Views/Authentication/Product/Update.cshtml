@@ -19,11 +19,10 @@
 
     <button type="submit">Update product</button>
 }
-<div class="row product-update">
+<div class="product-update">
     <div class="types">
         <div class="col-md-5">
             <h3>All types</h3>
-            <ul>
                 @foreach (var parent in Model.Product.Types)
                 {
                     using (Html.BeginForm("RemoveType", "Product", FormMethod.Post, new { @class = "remove-type" }))
@@ -32,13 +31,13 @@
                         @Html.Hidden("categoryId", Model.Category.CategoryId)
                         @Html.Hidden("typeId", parent.TypeId)
                         <button type="submit">-</button>
-                        <li>@parent.Title</li>
+                        <p>@parent.Title</p>
                     }
                 }
             </ul>
 
         </div>
-        <div class="col-md-7">
+        <div class="col-md-12 add-type">
             <h3>Add Type</h3>
             @foreach (var parent in Model.Types)
             {
@@ -57,33 +56,45 @@
     <div class="specs">
         <div>
             <h3>All specifictions</h3>
-            @foreach (var spec in Model.Specifications)
+            <table>
+                <thead>
+                    <tr>
+                        <th>Remove</th>
+                        <th>Spec name</th>
+                        <th>Spec value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var spec in Model.Specifications)
             {
-                <div class="specs-each">
-                    <a href="@Url.Action("RemoveSpec", "Product", new { specificationId = spec.SpecificationId, productId = spec.ProductId})">
-                        <p>remove</p>
-                    </a>
-                    <p><strong>@spec.Title</strong></p>
-                    <p>@spec.Description</p>
-                </div>
-            }
-        </div>
-        <div>
+                        <tr class="specs-each">
+                            <td>
+                                <a href="@Url.Action("RemoveSpec", "Product", new { specificationId = spec.SpecificationId, productId = spec.ProductId})">
+                                    <p>remove</p>
+                                </a>
+                            </td>
+                            <td><p><strong>@spec.Title</strong></p></td>
+                            <td><p>@spec.Description</p></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+</div>
+        <div class="add-spec">
             <h3>Add specifiction</h3>
-
-            @using (Html.BeginForm("AddSpec", "Product", FormMethod.Post))
+                @using (Html.BeginForm("AddSpec", "Product", FormMethod.Post))
             {
-                @*@Html.Hidden("productId", Model.Product.ProductId)*@
-                @Html.LabelFor(x => x.Specification.ProductId)
-                @Html.EditorFor(x => x.Specification.ProductId)
+                    @*@Html.Hidden("productId", Model.Product.ProductId)*@
+                    @Html.LabelFor(x => x.Specification.ProductId)
+                    @Html.EditorFor(x => x.Specification.ProductId)
 
-                @Html.LabelFor(x => x.Specification.Title)
-                @Html.EditorFor(x => x.Specification.Title)
+                    @Html.LabelFor(x => x.Specification.Title)
+                    @Html.EditorFor(x => x.Specification.Title)
 
-                @Html.LabelFor(x => x.Specification.Description)
-                @Html.EditorFor(x => x.Specification.Description)
-                <button type="submit">Add Specification</button>
-            }
+                    @Html.LabelFor(x => x.Specification.Description)
+                    @Html.EditorFor(x => x.Specification.Description)
+                    <button type="submit">Add Specification</button>
+                }
         </div>
     </div>
 </div>
